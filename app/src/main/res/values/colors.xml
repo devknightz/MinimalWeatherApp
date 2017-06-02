@@ -17,7 +17,23 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="day_color">#FBFBFB</color>
+    <color name="night_color">#0E0E0E</color>
+
+
+    <color name="dayColorPrimary">@color/day_color</color>
+    <color name="dayColorPrimaryDark">@color/day_color</color>
+    <color name="dayColorAccent">@color/day_color</color>
+
+    <color name="nightColorPrimary">@color/night_color</color>
+    <color name="nightColorPrimaryDark">@color/night_color</color>
+    <color name="nightColorAccent">@color/night_color</color>
+
+
+    <color name="colorPrimary">@color/dayColorPrimary</color>
+    <color name="colorPrimaryDark">@color/dayColorPrimaryDark</color>
+    <color name="colorAccent">@color/dayColorAccent</color>
+
+
+
 </resources>
