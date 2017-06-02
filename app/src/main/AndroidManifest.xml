@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2017 vinayagasundar
   ~ Copyright 2017 randhirgupta
   ~
@@ -14,11 +13,9 @@
   ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~  See the License for the specific language governing permissions and
   ~  limitations under the License.
-  -->
-
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="you.devknights.minimalweather">
-
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -31,13 +28,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity">
+
+
+        <!--
+            Don't change the Launcher activity name
+            simple change to targetActivity. so that
+            it'll be preserved in Home screen of the launchers
+            http://blog.danlew.net/2014/01/16/preserve-your-launchers-use-activity-alias/
+        -->
+        <!--<activity-alias-->
+            <!--android:name=".Launcher"-->
+            <!--android:targetActivity=".ui.landing.LandingActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity-alias>-->
+
+        <activity
+            android:name=".ui.landing.LandingActivity"
+            android:theme="@style/AppTheme.Landing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
     </application>
 
 </manifest>

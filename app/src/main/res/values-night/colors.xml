@@ -20,4 +20,6 @@
     <color name="colorPrimary">@color/nightColorPrimary</color>
     <color name="colorPrimaryDark">@color/nightColorPrimaryDark</color>
     <color name="colorAccent">@color/nightColorAccent</color>
+
+    <color name="windowBackgroundColor">@color/night_color</color>
 </resources>

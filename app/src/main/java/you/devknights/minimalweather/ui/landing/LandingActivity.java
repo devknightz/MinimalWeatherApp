@@ -15,18 +15,28 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather.ui;
+package you.devknights.minimalweather.ui.landing;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import you.devknights.minimalweather.R;
+import you.devknights.minimalweather.ui.MinimalWeatherAppActivity;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * This will be the Landing screen of the App.
+ * @author vinayagasundar
+ */
+public class LandingActivity extends MinimalWeatherAppActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+    }
+
+
+    @Override
+    public int getLayoutResId() {
+        return R.layout.activity_landing;
     }
 }

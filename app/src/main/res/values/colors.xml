@@ -34,6 +34,7 @@
     <color name="colorPrimaryDark">@color/dayColorPrimaryDark</color>
     <color name="colorAccent">@color/dayColorAccent</color>
 
+    <color name="windowBackgroundColor">@color/day_color</color>
 
 
 </resources>
