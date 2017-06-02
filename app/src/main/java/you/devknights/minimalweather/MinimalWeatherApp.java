@@ -18,6 +18,7 @@
 package you.devknights.minimalweather;
 
 import android.app.Application;
+import android.support.v7.app.AppCompatDelegate;
 
 /**
  * {@link Application} instance of the Weather App.
@@ -27,5 +28,16 @@ import android.app.Application;
 
 public class MinimalWeatherApp extends Application {
 
+    static {
+        // Initialize the day & light mode in the App
+        AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_AUTO);
+    }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+
+    }
 }
