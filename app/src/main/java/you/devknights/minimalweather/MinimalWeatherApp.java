@@ -17,14 +17,15 @@
 
 package you.devknights.minimalweather;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.app.Application;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * {@link Application} instance of the Weather App.
+ * we can initialize all the library here.
+ * @author vinayagasundar
+ */
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+public class MinimalWeatherApp extends Application {
+
+
 }
