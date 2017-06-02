@@ -1,0 +1,66 @@
+/*
+ * Copyright 2017 vinayagasundar
+ * Copyright 2017 randhirgupta
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        def versionMajor = 0
+        def versionMinor = 1
+        def versionPatch = 0
+
+        def versionFullName = "${versionMajor}.${versionMinor}.${versionPatch}"
+        def versionCodeFinal = versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100
+
+        applicationId "you.devknights.minimalweather"
+
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        versionCode versionCodeFinal
+        versionName "${versionFullName}"
+
+        /*Enabled Vector Support*/
+        vectorDrawables.useSupportLibrary = true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressCoreVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
+    compile 'android.arch.lifecycle:extensions:' + rootProject.archLifecycleVersion;
+    compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion;
+    annotationProcessor "android.arch.lifecycle:compiler:" + rootProject.archLifecycleVersion;
+    annotationProcessor "android.arch.persistence.room:compiler:" + rootProject.archRoomVersion;
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+}
