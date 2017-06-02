@@ -55,6 +55,11 @@ ext {
     archLifecycleVersion = "1.0.0-alpha1"
     archRoomVersion = "1.0.0-alpha1"
 
+    // Retrofit
+    retrofitVersion = "2.3.0"
+    retrofitLoggerVersion = "3.4.1"
+    retrofitGsonConvVersion = "2.1.0"
+
 
     // Test
     junitVersion = '4.12'
