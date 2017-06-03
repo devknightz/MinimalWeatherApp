@@ -16,12 +16,17 @@
   ~  limitations under the License.
   -->
 
-<resources>
-    <color name="colorPrimary">@color/nightColorPrimary</color>
-    <color name="colorPrimaryDark">@color/nightColorPrimaryDark</color>
-    <color name="colorAccent">@color/nightColorAccent</color>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportHeight="96"
+    android:viewportWidth="96">
 
-    <color name="windowBackgroundColor">@color/night_color</color>
-
-    <color name="landingCityTextColor">@color/nightPrimaryTextColor</color>
-</resources>
+    <path
+        android:fillColor="#0e0e0e"
+        android:pathData="M48,74c-6.065,0-11-4.935-11-11c0-2.808,1.08-5.508,2.99-7.541L40,29.999C40,25.589,43.589,22,48,22s8,3.589,8,8
+l0.009,25.459C57.92,57.491,59,60.191,59,63C59,69.065,54.065,74,48,74L48,74z
+M48,26c-2.206,0-4,1.794-4,4l-0.01,26.3
+c0,0.567-0.241,1.107-0.663,1.487C41.848,59.115,41,61.016,41,63c0,3.859,3.141,7,7,7s7-3.141,7-7
+c0-1.985-0.849-3.885-2.327-5.213c-0.423-0.379-0.664-0.92-0.664-1.487L52,30.001C52,27.794,50.206,26,48,26L48,26z" />
+</vector>

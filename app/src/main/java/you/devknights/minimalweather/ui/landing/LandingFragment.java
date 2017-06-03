@@ -17,32 +17,31 @@
 
 package you.devknights.minimalweather.ui.landing;
 
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import you.devknights.minimalweather.R;
-import you.devknights.minimalweather.ui.MinimalWeatherAppActivity;
 
 /**
- * This will be the Landing screen of the App.
- * @author vinayagasundar
+ * A simple {@link Fragment} subclass.
  */
-public class LandingActivity extends MinimalWeatherAppActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+public class LandingFragment extends Fragment {
 
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_container, new LandingFragment())
-                    .commit();
-        }
+    public LandingFragment() {
+        // Required empty public constructor
     }
 
 
     @Override
-    public int getLayoutResId() {
-        return R.layout.activity_landing;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_landing, container, false);
     }
+
 }

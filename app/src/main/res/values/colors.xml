@@ -18,12 +18,15 @@
 
 <resources>
     <color name="day_color">#FBFBFB</color>
-    <color name="night_color">#0E0E0E</color>
+    <color name="night_color">#0e0e0e</color>
 
 
     <color name="dayColorPrimary">@color/day_color</color>
     <color name="dayColorPrimaryDark">@color/day_color</color>
     <color name="dayColorAccent">@color/day_color</color>
+
+    <color name="dayPrimaryTextColor">@color/night_color</color>
+    <color name="nightPrimaryTextColor">@color/day_color</color>
 
     <color name="nightColorPrimary">@color/night_color</color>
     <color name="nightColorPrimaryDark">@color/night_color</color>
@@ -35,6 +38,11 @@
     <color name="colorAccent">@color/dayColorAccent</color>
 
     <color name="windowBackgroundColor">@color/day_color</color>
+
+    <color name="landingCityTextColor">@color/dayPrimaryTextColor</color>
+    <color name="weatherTemperatureTextColor">@color/dayPrimaryTextColor</color>
+
+    <color name="landingDividerBackgroundColor">@android:color/holo_blue_bright</color>
 
 
 </resources>

@@ -30,4 +30,46 @@
         <item name="android:windowBackground">@color/windowBackgroundColor</item>
     </style>
 
+    <style name="AppTheme.Landing.CityTextStyle" parent="@style/TextAppearance.AppCompat.Large">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/landingCityTextColor</item>
+    </style>
+
+    <style name="AppTheme.Landing.TimeTextStyle" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="AppTheme.Landing.TemperatureTextStyle"
+        parent="@style/TextAppearance.AppCompat.Display1">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/weatherTemperatureTextColor</item>
+    </style>
+
+    <style name="AppTheme.Landing.TimeMessageTextStyle" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppTheme.Landing.WeatherInfoLabelTextStyle" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.Landing.WeatherInfoTextStyle" parent="@style/TextAppearance.AppCompat.Medium">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

@@ -1,0 +1,223 @@
+<!--
+  ~ Copyright 2017 vinayagasundar
+  ~ Copyright 2017 randhirgupta
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="you.devknights.minimalweather.ui.landing.LandingFragment">
+
+
+    <TextView
+        android:id="@+id/cityText"
+        style="@style/AppTheme.Landing.CityTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Paris" />
+
+    <TextView
+        android:id="@+id/timeText"
+        style="@style/AppTheme.Landing.TimeTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityText"
+        tools:text="Sunday 9:00 AM" />
+
+    <ImageView
+        android:id="@+id/weatherStatusImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/desc_weather_status_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeText"
+        app:srcCompat="@color/night_color" />
+
+    <TextView
+        android:id="@+id/weatherTemperatureText"
+        style="@style/AppTheme.Landing.TemperatureTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherStatusImage"
+        tools:text="8&#x2103;" />
+
+    <TextView
+        android:id="@+id/timeRelatedMessageText"
+        style="@style/AppTheme.Landing.TimeMessageTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherTemperatureText"
+        tools:text="Good Morning\nParis" />
+
+    <ImageView
+        android:id="@+id/sunriseImage"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/windImage"
+        app:layout_constraintTop_toBottomOf="@+id/timeRelatedMessageText"
+        android:contentDescription="@string/desc_sunrise"
+        app:srcCompat="@drawable/sun_rise" />
+
+    <ImageView
+        android:id="@+id/windImage"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintLeft_toLeftOf="@+id/sunriseImage"
+        app:layout_constraintRight_toRightOf="@+id/temperatureImage"
+        app:layout_constraintTop_toBottomOf="@+id/timeRelatedMessageText"
+        android:contentDescription="@string/desc_wind"
+        app:srcCompat="@drawable/wind" />
+
+    <ImageView
+        android:id="@+id/temperatureImage"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/windImage"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeRelatedMessageText"
+        android:contentDescription="@string/desc_temperature"
+        app:srcCompat="@drawable/temperature" />
+
+
+    <TextView
+        android:id="@+id/sunriseLabelText"
+        style="@style/AppTheme.Landing.WeatherInfoLabelTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/label_sunrise"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/windLabelText"
+        app:layout_constraintTop_toBottomOf="@+id/sunriseImage"
+        app:srcCompat="@drawable/sun_rise" />
+
+    <TextView
+        android:id="@+id/windLabelText"
+        style="@style/AppTheme.Landing.WeatherInfoLabelTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_wind"
+        app:layout_constraintLeft_toLeftOf="@+id/sunriseImage"
+        app:layout_constraintRight_toRightOf="@+id/temperatureImage"
+        app:layout_constraintTop_toBottomOf="@+id/windImage"
+        app:srcCompat="@drawable/wind" />
+
+    <TextView
+        android:id="@+id/temperatureLabelText"
+        style="@style/AppTheme.Landing.WeatherInfoLabelTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/label_temperature"
+        app:layout_constraintHorizontal_bias="0.67"
+        app:layout_constraintLeft_toRightOf="@+id/windLabelText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureImage"
+        app:srcCompat="@drawable/temperature" />
+
+
+    <TextView
+        android:id="@+id/sunriseText"
+        style="@style/AppTheme.Landing.WeatherInfoTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/windText"
+        app:layout_constraintTop_toBottomOf="@+id/sunriseLabelText"
+        app:srcCompat="@drawable/sun_rise"
+        tools:text="6.00" />
+
+    <TextView
+        android:id="@+id/windText"
+        style="@style/AppTheme.Landing.WeatherInfoTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/sunriseImage"
+        app:layout_constraintRight_toRightOf="@+id/temperatureImage"
+        app:layout_constraintTop_toBottomOf="@+id/windLabelText"
+        app:srcCompat="@drawable/wind"
+        tools:text="4m/s" />
+
+    <TextView
+        android:id="@+id/temperatureText"
+        style="@style/AppTheme.Landing.WeatherInfoTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintLeft_toRightOf="@+id/windText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureLabelText"
+        app:srcCompat="@drawable/temperature"
+        tools:text="8&#x2103;" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -17,4 +17,15 @@
 
 <resources>
     <string name="app_name">Minimal Weather</string>
+    
+    
+    <string name="label_sunrise">sunrise</string>
+    <string name="label_wind">wind</string>
+    <string name="label_temperature">temperature</string>
+
+
+    <string name="desc_weather_status_image">Display current weather status information</string>
+    <string name="desc_sunrise">Display the Sunrise time</string>
+    <string name="desc_wind">Display the Wind Speed</string>
+    <string name="desc_temperature">Display the Temperature</string>
 </resources>
