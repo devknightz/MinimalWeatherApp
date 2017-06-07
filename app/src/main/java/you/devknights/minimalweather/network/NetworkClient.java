@@ -32,7 +32,7 @@ import you.devknights.minimalweather.BuildConfig;
 public class NetworkClient {
 
     // TODO: 6/2/2017 Need to add Base URL
-    private static final String BASE_URL = "";
+    private static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
 
     private Retrofit mRetrofit;
 

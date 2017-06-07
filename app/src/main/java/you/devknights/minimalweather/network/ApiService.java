@@ -17,6 +17,12 @@
 
 package you.devknights.minimalweather.network;
 
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
+import you.devknights.minimalweather.model.Forecast;
+import you.devknights.minimalweather.model.Weather;
+
 /**
  * This interface contains all the API information
  *
@@ -24,4 +30,17 @@ package you.devknights.minimalweather.network;
  */
 
 public interface ApiService {
+
+    @GET("weather")
+    Call<Weather> getWeatherDataCall(@Query("q") String city,
+                                     @Query("appid") String apiKey);
+
+    @GET("weather")
+    Call<Weather> getWeatherDataWithLocationCall(@Query("lat") Double latitude,
+                                                 @Query("lon") Double longitude,
+                                                 @Query("appid") String apiKey);
+
+    @GET("forecast")
+    Call<Forecast> getForecastDataCall(@Query("q") String city,
+                                       @Query("appid") String apiKey);
 }
