@@ -48,7 +48,8 @@
 
         <activity
             android:name=".ui.landing.LandingActivity"
-            android:theme="@style/AppTheme.Landing">
+            android:theme="@style/AppTheme.Landing"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
