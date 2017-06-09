@@ -57,6 +57,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    compile "com.android.support:gridlayout-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
     compile 'android.arch.lifecycle:extensions:' + rootProject.archLifecycleVersion;
     compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion;
