@@ -28,10 +28,10 @@ class Main {
     private double temp;
     @SerializedName("pressure")
     @Expose
-    private int pressure;
+    private float pressure;
     @SerializedName("humidity")
     @Expose
-    private int humidity;
+    private float humidity;
     @SerializedName("temp_min")
     @Expose
     private double tempMin;
@@ -47,19 +47,19 @@ class Main {
         this.temp = temp;
     }
 
-    public int getPressure() {
+    public float getPressure() {
         return pressure;
     }
 
-    public void setPressure(int pressure) {
+    public void setPressure(float pressure) {
         this.pressure = pressure;
     }
 
-    public int getHumidity() {
+    public float getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(int humidity) {
+    public void setHumidity(float humidity) {
         this.humidity = humidity;
     }
 
