@@ -63,6 +63,7 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_micro</item>
     </style>
 
     <style name="AppTheme.Landing.WeatherInfoTextStyle" parent="@style/TextAppearance.AppCompat.Medium">
