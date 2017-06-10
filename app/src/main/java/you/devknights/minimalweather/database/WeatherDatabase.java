@@ -15,31 +15,27 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather;
+package you.devknights.minimalweather.database;
 
-import android.app.Application;
-import android.support.v7.app.AppCompatDelegate;
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.RoomDatabase;
 
-import you.devknights.minimalweather.database.AppDatabase;
+import you.devknights.minimalweather.database.dao.WeatherDAO;
+import you.devknights.minimalweather.database.entity.WeatherEntity;
 
 /**
- * {@link Application} instance of the Weather App.
- * we can initialize all the library here.
+ * Database for Weather Apps. It'll return all the DAO.
  * @author vinayagasundar
  */
+@Database(entities = {WeatherEntity.class}, version = 1)
+public abstract class WeatherDatabase extends RoomDatabase {
 
-public class MinimalWeatherApp extends Application {
+    public static final String TABLE_WEATHER = "weather";
 
-    static {
-        // Initialize the day & light mode in the App
-        AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_AUTO);
-    }
+    static final String DATABASE_NAME = "weather.db";
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
+    public abstract WeatherDAO weatherDAO();
 
-        AppDatabase.getInstance().createDb(this);
-    }
+
+
 }

@@ -15,31 +15,29 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather;
+package you.devknights.minimalweather.database.dao;
 
-import android.app.Application;
-import android.support.v7.app.AppCompatDelegate;
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Query;
 
-import you.devknights.minimalweather.database.AppDatabase;
+import java.util.List;
+
+import you.devknights.minimalweather.database.WeatherDatabase;
+import you.devknights.minimalweather.database.entity.WeatherEntity;
+import you.devknights.minimalweather.model.Weather;
 
 /**
- * {@link Application} instance of the Weather App.
- * we can initialize all the library here.
+ * A DAO interface for {@link Weather} model
  * @author vinayagasundar
  */
 
-public class MinimalWeatherApp extends Application {
+@Dao
+public interface WeatherDAO {
 
-    static {
-        // Initialize the day & light mode in the App
-        AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_AUTO);
-    }
+    @Insert
+    void insert(WeatherEntity weatherEntity);
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        AppDatabase.getInstance().createDb(this);
-    }
+    @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER)
+    List<WeatherEntity> getAll();
 }
