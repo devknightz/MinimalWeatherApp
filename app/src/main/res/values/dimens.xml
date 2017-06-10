@@ -35,4 +35,10 @@
     <dimen name="app_text_size_xlarge">24sp</dimen>
     
     <dimen name="landing_screen_default_bottom_margin">16dp</dimen>
+
+    <dimen name="landing_screen_weather_status_image_width">150dp</dimen>
+    <dimen name="landing_screen_weather_status_image_height">150dp</dimen>
+
+    <dimen name="landing_screen_info_image_width">56dp</dimen>
+    <dimen name="landing_screen_info_image_height">56dp</dimen>
 </resources>

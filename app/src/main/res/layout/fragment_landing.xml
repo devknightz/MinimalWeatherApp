@@ -49,14 +49,12 @@
 
     <ImageView
         android:id="@+id/weatherStatusImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/landing_screen_weather_status_image_width"
+        android:layout_height="@dimen/landing_screen_weather_status_image_height"
         android:contentDescription="@string/desc_weather_status_image"
-        android:minHeight="100dp"
-        android:minWidth="100dp"
         app:layout_columnSpan="3"
         app:layout_gravity="center_horizontal|center"
-        app:srcCompat="@color/night_color" />
+        app:srcCompat="@drawable/wind" />
 
     <TextView
         android:id="@+id/weatherTemperatureText"
@@ -81,8 +79,8 @@
 
     <ImageView
         android:id="@+id/sunriseImage"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/landing_screen_info_image_width"
+        android:layout_height="@dimen/landing_screen_info_image_height"
         android:contentDescription="@string/desc_sunrise"
         app:layout_columnWeight="1"
         app:layout_gravity="center_horizontal"
@@ -90,8 +88,8 @@
 
     <ImageView
         android:id="@+id/windImage"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/landing_screen_info_image_width"
+        android:layout_height="@dimen/landing_screen_info_image_height"
         android:contentDescription="@string/desc_wind"
         app:layout_columnWeight="1"
         app:layout_gravity="center_horizontal"
@@ -99,8 +97,8 @@
 
     <ImageView
         android:id="@+id/temperatureImage"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/landing_screen_info_image_width"
+        android:layout_height="@dimen/landing_screen_info_image_height"
         android:contentDescription="@string/desc_temperature"
         app:layout_columnWeight="1"
         app:layout_gravity="center_horizontal"
