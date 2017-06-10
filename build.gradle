@@ -64,4 +64,7 @@ ext {
     // Test
     junitVersion = '4.12'
     espressCoreVersion = '2.2.2'
+
+    // Debug Only
+    debugDatabase = '1.0.0'
 }

@@ -89,5 +89,7 @@ dependencies {
 
     testCompile "junit:junit:$rootProject.ext.junitVersion"
 
+    debugCompile "com.amitshekhar.android:debug-db:$rootProject.ext.debugDatabase"
+
 
 }
