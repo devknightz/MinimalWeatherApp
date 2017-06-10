@@ -17,6 +17,16 @@
 
 apply plugin: 'com.android.application'
 
+
+/*Load the API keys from Properties file */
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+def releaseWeatherAPI = properties.getProperty('weather_api_key.release')
+def debugWeatherAPI = properties.getProperty('weather_api_key.debug')
+
+
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -45,8 +55,16 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "OPEN_WEATHER_API_KEY", "\"$releaseWeatherAPI\"")
+        }
+
+        debug {
+            minifyEnabled false
+
+            buildConfigField("String", "OPEN_WEATHER_API_KEY", "\"$debugWeatherAPI\"")
         }
     }
 }
