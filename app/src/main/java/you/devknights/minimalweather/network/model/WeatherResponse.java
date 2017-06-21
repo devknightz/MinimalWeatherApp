@@ -23,6 +23,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import you.devknights.minimalweather.database.entity.WeatherEntity;
+
 public class WeatherResponse {
 
     @SerializedName("coord")
@@ -156,6 +158,36 @@ public class WeatherResponse {
 
     public void setCod(int cod) {
         this.cod = cod;
+    }
+
+
+
+    public you.devknights.minimalweather.model.Weather buildWeather() {
+        WeatherEntity weatherEntity = new WeatherEntity();
+
+        weatherEntity.setPlaceId(id);
+        weatherEntity.setPlaceName(name);
+        weatherEntity.setPlaceLat(coord.getLat());
+        weatherEntity.setPlaceLon(coord.getLon());
+
+        if (getWeather() != null && getWeather().size() > 0) {
+            Weather weather = getWeather().get(0);
+
+            weatherEntity.setWeatherId(weather.getId());
+            weatherEntity.setWeatherMain(weather.getMain());
+            weatherEntity.setWeatherDescription(weather.getDescription());
+            weatherEntity.setWeatherIcon(weather.getIcon());
+        }
+
+        weatherEntity.setTemperature(main.getPressure());
+        weatherEntity.setPressure(main.getPressure());
+        weatherEntity.setHumidity(main.getHumidity());
+        weatherEntity.setWindSpeed((float) wind.getSpeed());
+        weatherEntity.setSunriseTime(sys.getSunrise());
+        weatherEntity.setSunsetTime(sys.getSunset());
+
+        return weatherEntity;
+
     }
 
 }

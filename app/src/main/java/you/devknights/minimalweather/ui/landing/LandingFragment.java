@@ -19,18 +19,28 @@ package you.devknights.minimalweather.ui.landing;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import you.devknights.minimalweather.R;
+import you.devknights.minimalweather.network.ApiService;
+import you.devknights.minimalweather.network.NetworkClient;
+import you.devknights.minimalweather.network.model.WeatherResponse;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class LandingFragment extends Fragment {
 
+    private static final String TAG = "LandingFragment";
 
     public LandingFragment() {
         // Required empty public constructor
@@ -44,4 +54,31 @@ public class LandingFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_landing, container, false);
     }
 
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        ApiService mApiService = NetworkClient.getApiService();
+
+        Call<WeatherResponse> weatherResponseCall = mApiService.getWeatherDataCall("Bangalore",
+                "63b2611ca2ad0bd3c881be68e0d7b7ab");
+
+        weatherResponseCall.enqueue(new Callback<WeatherResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<WeatherResponse> call,
+                                   @NonNull Response<WeatherResponse> response) {
+
+                Log.i(TAG, "onResponse: " + response);
+
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<WeatherResponse> call, @NonNull Throwable t) {
+                Log.e(TAG, "onFailure: ", t);
+            }
+        });
+    }
 }

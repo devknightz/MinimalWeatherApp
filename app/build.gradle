@@ -18,7 +18,7 @@
 apply plugin: 'com.android.application'
 
 
-/*Load the API keys from Properties file */
+/* Load the API keys from Properties file */
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
