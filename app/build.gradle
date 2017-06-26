@@ -67,6 +67,10 @@ android {
             buildConfigField("String", "OPEN_WEATHER_API_KEY", "\"$debugWeatherAPI\"")
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
