@@ -50,7 +50,7 @@ before_deploy:
 - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/weather_app.jks
   -storepass $keystore_password -keypass $alias_password app-release-unsigned.apk weather_app
 - jarsigner -verify app-release-unsigned.apk
-- "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk MinimalWeatherApp.apk"
+- "${ANDROID_HOME}build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk MinimalWeatherApp.apk"
 deploy:
   provider: releases
   file: MinimalWeatherApp.apk
