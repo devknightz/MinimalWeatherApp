@@ -1,0 +1,63 @@
+language: android
+sudo: required
+jdk: oraclejdk8
+before_cache:
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+env:
+  global:
+  - ANDROID_API=25
+  - EMULATOR_API=25
+  - ANDROID_BUILD_TOOLS=25.0.3
+  - ADB_INSTALL_TIMEOUT=5
+  - secure: fIoUF51oui+C+SxkMW7VtrD2FdpFikEXjcCJUpVmYAXLpF9f+EPBo7WYEhKLPUO4rgA1H3V0TmVjObQPhrI6i6ZvQfQFQlLQvS8AI2X4FDmBHbgp7BFoFgJhkdZmQDPUtitPn1Xzcvsx8bwvw9aJSu8/LZzulFQuW0OOnnvfVQS8XNTFZA8phjGRx/RD4kG9rzeARX5K7OlPtbXe2UnYuHkzKxvenI+lMpaFCTO0v8R4//jIsr4Hw/cDSV5kaE+TEE29wFBFFP/680UF3OdkhKQLdemOi8hTL82XrmY5flGIVU6VKRcNzmIefhARNPKXmgW43qWofFGgp6kgC7G9EUk9efnhc7GEDzPLggbYXjOmaWOTZi4tIVHgTAFdn+zC5KkOc7NIbYBj/CgvI2qqq/twQWrNEey6JhmQowLRMl0Dw3k/Zni8RT/F/PNtZtCwHHjlzgeS1tgYayIBZm+nhk4WyEB++jJzAhI4UudFGm2XA34XiYpXePY/dhxgnrWmOEpERyWmPm+ssUstyrmqF+i2NOSgIakLSbUemospdDoD4ianMMIRp1X1vdAdz7apKiWgQFYrqK5HZbr44AdtUglo3ffOKccPj+NIH3ws3hdQ4orOdVXxPIF6m2icT+6B1qUJQNCZ7fV9t13alyVXkl9nOyVV8TcwXLDsL8B3mmI=
+  - secure: b9y2/IrNzqjfSrWD+qFQVt6Uwiu6WLV6UGnhaL4r0EFiGkpaO99OMbGQ6ltCP63PFnqEnYv5xiNy3aUCAedr5nMW9F0WDp/gal5yzOzEx4zAhovPQf94+im3FVzjTKaPAAuVWs3nAd8f+FgJOOyDqr8I9MSKI2cBBq1bIje/J1+nSUUuf5S7COaLIN3445CSLKvXQ5jJ0O9r6seLiX1t/dpYSH5UTG/3NGzdR9Ktuk5Hh5cwqnwXYebpKPTowVFWKeeQXnScSPpux//aCGlcBm+RtWC4w8NhEw1hLpPHfFbhx3qYVrLZtSGF9hUUSGH7bTJISP2I8ZR71E7xyga1QG5grn45Eqn8eDF5w2UDwjg9qOZZvmQdRs3A/B5Q+GXBnGd1OSkDuwKkIQE8UN9oSecENRstoHS9ACXLUyk6X8XRE/k+qkSc/fS+rM75oNKsKaOTU9iXiGHmAwJ+caG0mvw5QvDh/EAjtN2tebEH+Wo4k+/clb1eKLzKn0PjCyyeKhpo1qLUf1/Cwhxx5mv+xwWLB5Oa/WwQo8K/zzI6IfPUQh2evdUl+BZrPpggw0kL654jXUxmk03ZYeesWmEhTHDVypcPKzwgzCxw0y0cicKk0REfAhC1kuNX2jUETwpd2UmWJRbDHukXsyxcFuYB+Z2OmGpWvKh37bP53dKaZvU=
+android:
+  components:
+  - tools
+  - platform-tools
+  - build-tools-$ANDROID_BUILD_TOOLS
+  - android-$ANDROID_API
+  - android-$EMULATOR_API_LEVEL
+  - extra-google-m2repository
+  - extra-android-m2repository
+  - addon-google_apis-google-25
+  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+  - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+  licenses:
+  - android-sdk-preview-license-.+
+  - android-sdk-license-.+
+  - google-gdk-license-.+
+before_install:
+- openssl aes-256-cbc -K $encrypted_c684be8710f9_key -iv $encrypted_c684be8710f9_iv
+  -in weather_app.jks.enc -out weather_app.jks -d
+- chmod +x gradlew
+- "./gradlew dependencies || true"
+before_script:
+- echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+- emulator -avd test -no-skin -no-audio -no-window &
+- android-wait-for-emulator
+- adb shell input keyevent 82 &
+script:
+- "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
+before_deploy:
+- cp $TRAVIS_BUILD_DIR/example_keystore.jks $HOME
+- cd app/build/outputs/apk/
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/weather_app.jks
+  -storepass $keystore_password -keypass $keypass app-release-unsigned.apk weather_app
+- jarsigner -verify app-release-unsigned.apk
+- "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk MinimalWeatherApp.apk"
+deploy:
+  provider: releases
+  file: MinimalWeatherApp.apk
+  skip_cleanup: true
+  on:
+    repo: devknightz/MinimalWeatherApp
+    tags: true
+    jdk: oraclejdk8
+  api_key:
+    secure: "god/mGhuywMgCCPdNxLvx83owaemIClJOUrwCo8XOTyW7flvjNJP+/DvfnWomUSb82+Dp85d0g1zGEHzwW+yNI3vjnUZLeKr9LUfJ8SXHeCsqSxfwUwJMcKD2cxKj0mKpNWW00PL9xB0EI2jQ1e84abTxTytLqE/xsMQmvFTsNW1baKsutBjfXWs+0dmBXHyqc5LvLuJcxM9OTAGhpb5r1h4D6kmSEH3LPO3VhBxjtjHaRw8WHxv98L9i1FoBc0/BF4DZTqEgmcNIKVHGHM+ZEJ1V7dX8yQQ0uonSDcgMfjk+qDdHzugWAdf/ihO2ntQgA2sYd2/mGeWNsN5FpTGsqV0b4I5luIX7zQuQJqvHG1GKJQ4TDMxbe9JW0miRI9HenZA3gDNx6bF8c4+GT92DRHGWIyFpUQ7wTOfkaPLUct3zBe2M/qyumzfuRxgkm9jzeeqA+s+K5qPoKUojCj1re0rBA9Cbkek8pa2RwaEosL8eEAv0Glodq4+gq0YIjhHoAtEHzwxpE7+7+cbfJzzxVTNHJEoh6mE0XBGiXzj5ExvMbVNax8BRbr5v3HCWFTtgckyi5yJuoOKoGX4SWtPzuzn2Ks/zN8PNgquwCuXm49psWea3GMtB663wG5PCOLcGAtNtpOk/1SpcA62DpXwV/2FtQWjycDS277H20tODnI="
