@@ -34,7 +34,7 @@ android:
   - google-gdk-license-.+
 before_install:
 - openssl aes-256-cbc -K $encrypted_c684be8710f9_key -iv $encrypted_c684be8710f9_iv
-  -in weather_app.jks.enc -out weather_app.jks -d
+  -in release_build/weather_app.jks.enc -out weather_app.jks -d
 - chmod +x gradlew
 - "./gradlew dependencies || true"
 before_script:
