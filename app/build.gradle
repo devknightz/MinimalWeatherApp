@@ -47,10 +47,19 @@ android {
         versionCode versionCodeFinal
         versionName "${versionFullName}"
 
+        multiDexEnabled true
+
         /*Enabled Vector Support*/
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
