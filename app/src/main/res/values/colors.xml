@@ -44,5 +44,10 @@
 
     <color name="landingDividerBackgroundColor">@android:color/holo_blue_bright</color>
 
+    <color name="dashboard_icon_color">@color/night_color</color>
+
+    <color name="icon_sun_rise_color">@color/dashboard_icon_color</color>
+    <color name="icon_temperature_color">@color/dashboard_icon_color</color>
+    <color name="icon_wind_color">@color/dashboard_icon_color</color>
 
 </resources>

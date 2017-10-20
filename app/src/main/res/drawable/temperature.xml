@@ -23,7 +23,7 @@
     android:viewportWidth="96">
 
     <path
-        android:fillColor="#0e0e0e"
+        android:fillColor="@color/icon_sun_rise_color"
         android:pathData="M48,74c-6.065,0-11-4.935-11-11c0-2.808,1.08-5.508,2.99-7.541L40,29.999C40,25.589,43.589,22,48,22s8,3.589,8,8
 l0.009,25.459C57.92,57.491,59,60.191,59,63C59,69.065,54.065,74,48,74L48,74z
 M48,26c-2.206,0-4,1.794-4,4l-0.01,26.3
