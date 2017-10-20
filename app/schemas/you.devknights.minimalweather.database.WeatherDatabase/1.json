@@ -1,0 +1,112 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "f2e02bd009cade4d4bb7f75e935d0c2a",
+    "entities": [
+      {
+        "tableName": "weather",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT, `placeId` INTEGER, `placeName` TEXT, `placeLat` REAL, `placeLon` REAL, `weatherId` INTEGER, `weatherMain` TEXT, `weatherDescription` TEXT, `weatherIcon` TEXT, `temperature` REAL, `pressure` REAL, `humidity` REAL, `windSpeed` REAL, `sunriseTime` INTEGER, `sunsetTime` INTEGER, `startTime` INTEGER, `endTime` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "_id",
+            "columnName": "_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "placeId",
+            "columnName": "placeId",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "placeName",
+            "columnName": "placeName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "placeLat",
+            "columnName": "placeLat",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "placeLon",
+            "columnName": "placeLon",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "weatherId",
+            "columnName": "weatherId",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "weatherMain",
+            "columnName": "weatherMain",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "weatherDescription",
+            "columnName": "weatherDescription",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "weatherIcon",
+            "columnName": "weatherIcon",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "temperature",
+            "columnName": "temperature",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "pressure",
+            "columnName": "pressure",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "humidity",
+            "columnName": "humidity",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "windSpeed",
+            "columnName": "windSpeed",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "sunriseTime",
+            "columnName": "sunriseTime",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "sunsetTime",
+            "columnName": "sunsetTime",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "startTime",
+            "columnName": "startTime",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "endTime",
+            "columnName": "endTime",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"f2e02bd009cade4d4bb7f75e935d0c2a\")"
+    ]
+  }
+}
