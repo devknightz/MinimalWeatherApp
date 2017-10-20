@@ -162,7 +162,7 @@ public class WeatherResponse {
 
 
 
-    public you.devknights.minimalweather.model.Weather buildWeather() {
+    public WeatherEntity buildWeather() {
         WeatherEntity weatherEntity = new WeatherEntity();
 
         weatherEntity.setPlaceId(id);

@@ -25,10 +25,9 @@ import java.util.List;
 
 import you.devknights.minimalweather.database.WeatherDatabase;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
-import you.devknights.minimalweather.model.Weather;
 
 /**
- * A DAO interface for {@link Weather} model
+ * A DAO interface for {@link WeatherEntity} model
  * @author vinayagasundar
  */
 

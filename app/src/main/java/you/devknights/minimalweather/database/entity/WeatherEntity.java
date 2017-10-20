@@ -21,7 +21,6 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 import you.devknights.minimalweather.database.WeatherDatabase;
-import you.devknights.minimalweather.model.Weather;
 
 /**
  * @author Randhir
@@ -29,7 +28,7 @@ import you.devknights.minimalweather.model.Weather;
  */
 
 @Entity(tableName = WeatherDatabase.TABLE_WEATHER)
-public class WeatherEntity implements Weather {
+public class WeatherEntity {
 
     @PrimaryKey(autoGenerate = true)
     private long _id;
@@ -80,7 +79,6 @@ public class WeatherEntity implements Weather {
         this._id = _id;
     }
 
-    @Override
     public int getPlaceId() {
         return placeId;
     }
@@ -89,7 +87,6 @@ public class WeatherEntity implements Weather {
         this.placeId = placeId;
     }
 
-    @Override
     public String getPlaceName() {
         return placeName;
     }
@@ -98,7 +95,6 @@ public class WeatherEntity implements Weather {
         this.placeName = placeName;
     }
 
-    @Override
     public double getPlaceLat() {
         return placeLat;
     }
@@ -107,7 +103,6 @@ public class WeatherEntity implements Weather {
         this.placeLat = placeLat;
     }
 
-    @Override
     public double getPlaceLon() {
         return placeLon;
     }
@@ -116,7 +111,6 @@ public class WeatherEntity implements Weather {
         this.placeLon = placeLon;
     }
 
-    @Override
     public int getWeatherId() {
         return weatherId;
     }
@@ -125,7 +119,6 @@ public class WeatherEntity implements Weather {
         this.weatherId = weatherId;
     }
 
-    @Override
     public String getWeatherMain() {
         return weatherMain;
     }
@@ -134,7 +127,6 @@ public class WeatherEntity implements Weather {
         this.weatherMain = weatherMain;
     }
 
-    @Override
     public String getWeatherDescription() {
         return weatherDescription;
     }
@@ -143,7 +135,6 @@ public class WeatherEntity implements Weather {
         this.weatherDescription = weatherDescription;
     }
 
-    @Override
     public String getWeatherIcon() {
         return weatherIcon;
     }
@@ -152,7 +143,6 @@ public class WeatherEntity implements Weather {
         this.weatherIcon = weatherIcon;
     }
 
-    @Override
     public float getTemperature() {
         return temperature;
     }
@@ -161,7 +151,6 @@ public class WeatherEntity implements Weather {
         this.temperature = temperature;
     }
 
-    @Override
     public float getPressure() {
         return pressure;
     }
@@ -170,7 +159,6 @@ public class WeatherEntity implements Weather {
         this.pressure = pressure;
     }
 
-    @Override
     public float getHumidity() {
         return humidity;
     }
@@ -179,7 +167,6 @@ public class WeatherEntity implements Weather {
         this.humidity = humidity;
     }
 
-    @Override
     public float getWindSpeed() {
         return windSpeed;
     }
@@ -188,7 +175,6 @@ public class WeatherEntity implements Weather {
         this.windSpeed = windSpeed;
     }
 
-    @Override
     public long getSunriseTime() {
         return sunriseTime;
     }
@@ -197,7 +183,6 @@ public class WeatherEntity implements Weather {
         this.sunriseTime = sunriseTime;
     }
 
-    @Override
     public long getSunsetTime() {
         return sunsetTime;
     }
@@ -206,7 +191,6 @@ public class WeatherEntity implements Weather {
         this.sunsetTime = sunsetTime;
     }
 
-    @Override
     public long getStartTime() {
         return startTime;
     }
@@ -215,7 +199,6 @@ public class WeatherEntity implements Weather {
         this.startTime = startTime;
     }
 
-    @Override
     public long getEndTime() {
         return endTime;
     }

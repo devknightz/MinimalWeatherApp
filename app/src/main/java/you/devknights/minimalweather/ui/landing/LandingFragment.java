@@ -36,7 +36,6 @@ import retrofit2.Response;
 import you.devknights.minimalweather.R;
 import you.devknights.minimalweather.database.AppDatabase;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
-import you.devknights.minimalweather.model.Weather;
 import you.devknights.minimalweather.network.ApiService;
 import you.devknights.minimalweather.network.NetworkClient;
 import you.devknights.minimalweather.network.model.WeatherResponse;
@@ -90,14 +89,14 @@ public class LandingFragment extends Fragment {
 
         new LoadWeatherData(new LoadWeatherData.Callback() {
             @Override
-            public void onWeatherData(Weather weather) {
+            public void onWeatherData(WeatherEntity weather) {
                 bindData(weather);
             }
         }).execute();
     }
 
 
-    private void bindData(Weather weather) {
+    private void bindData(WeatherEntity weather) {
         mCityText.setText(weather.getPlaceName());
 
         String temperatureInCelsius = getString(R.string.temp_in_celsius,
@@ -112,7 +111,7 @@ public class LandingFragment extends Fragment {
         mTemperatureText.setText(temperatureInCelsius);
     }
 
-    private static class LoadWeatherData extends AsyncTask<Void, Void, Weather> {
+    private static class LoadWeatherData extends AsyncTask<Void, Void, WeatherEntity> {
 
         private Callback callback;
 
@@ -121,8 +120,8 @@ public class LandingFragment extends Fragment {
         }
 
         @Override
-        protected Weather doInBackground(Void... params) {
-            Weather weather = null;
+        protected WeatherEntity doInBackground(Void... params) {
+            WeatherEntity weather = null;
 
             ApiService apiService = NetworkClient.getApiService();
             Call<WeatherResponse> weatherResponseCall = apiService.getWeatherDataCall("Bangalore",
@@ -154,7 +153,7 @@ public class LandingFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Weather weather) {
+        protected void onPostExecute(WeatherEntity weather) {
             super.onPostExecute(weather);
 
             if (weather != null) {
@@ -165,7 +164,7 @@ public class LandingFragment extends Fragment {
         }
 
         interface Callback {
-            void onWeatherData(Weather weather);
+            void onWeatherData(WeatherEntity weather);
         }
     }
 }
