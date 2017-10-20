@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2017 vinayagasundar
+  ~ Copyright 2017 randhirgupta
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportHeight="96"
+    android:viewportWidth="96">
+
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M48,78 C46.895,78,46,78.896,46,80 L46,84 C46,85.104,46.895,86,48,86
+C49.104,86,50,85.104,50,84 L50,80 C50,78.896,49.104,78,48,78 Z M39,72
+C37.895,72,37,72.896,37,74 L37,78 C37,79.104,37.895,80,39,80
+C40.104,80,41,79.104,41,78 L41,74 C41,72.896,40.104,72,39,72 Z M57,72
+C55.895,72,55,72.896,55,74 L55,78 C55,79.104,55.895,80,57,80
+C58.104,80,59,79.104,59,78 L59,74 C59,72.896,58.104,72,57,72 Z M66,40
+C65.492,40,64.888,40.079,64.311,40.184 C62.218,33.012,55.663,28,48,28
+C40.336,28,33.781,33.012,31.688,40.184 C31.112,40.079,30.507,40,30,40
+C23.935,40,19,44.935,19,51 S23.935,62,30,62 L37,62 L37,66
+C37,67.104,37.895,68,39,68 C40.104,68,41,67.104,41,66 L41,62 L55,62 L55,66
+C55,67.104,55.895,68,57,68 C58.104,68,59,67.104,59,66 L59,62 L66,62
+C72.065,62,77,57.065,77,51 S72.065,40,66,40 Z M66,58 L30,58
+C26.141,58,23,54.859,23,51 S26.141,44,30,44
+C30.277,44,30.723,44.068,31.193,44.162 L31.193,46
+C31.193,47.104,32.088,48,33.193,48 C34.298,48,35.193,47.104,35.193,46
+L35.193,42.781 C36.266,36.528,41.629,32,48,32
+C54.37,32,59.733,36.528,60.807,42.782 L60.807,46
+C60.807,47.104,61.703,48,62.807,48 S64.807,47.104,64.807,46 L64.807,44.163
+C65.277,44.069,65.726,44,66,44 C69.859,44,73,47.141,73,51 S69.859,58,66,58 Z
+M48,66 C46.895,66,46,66.896,46,68 L46,72 C46,73.104,46.895,74,48,74
+C49.104,74,50,73.104,50,72 L50,68 C50,66.896,49.104,66,48,66 Z" />
+</vector>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2017 vinayagasundar
+  ~ Copyright 2017 randhirgupta
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportHeight="96"
+    android:viewportWidth="96">
+
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M69.24,40.488 C72.173,37.886,74,34.094,74,30 C74,28.896,73.104,28,72,28
+C66.486,28,62,23.514,62,18 C62,16.896,61.104,16,60,16
+C52.922,16,47.069,21.284,46.143,28.111 C39.295,28.848,33.61,33.599,31.689,40.183
+C31.112,40.079,30.507,40,30,40 C23.935,40,19,44.935,19,51 S23.935,62,30,62
+L66,62 C72.065,62,77,57.065,77,51 C77,46.062,73.728,41.875,69.24,40.488 Z
+M58.168,20.168 C59.102,26.153,63.843,30.896,69.828,31.832
+C69.213,35.078,66.988,37.838,63.966,39.158
+C61.812,33.21,56.519,28.952,50.174,28.15
+C50.933,24.111,54.126,20.92,58.168,20.168 Z M66,58 L30,58
+C26.141,58,23,54.859,23,51 S26.141,44,30,44
+C30.277,44,30.724,44.068,31.194,44.162 L31.194,46
+C31.194,47.104,32.09,48,33.194,48 S35.194,47.104,35.194,46 L35.194,42.776
+C36.269,36.525,41.631,32,48,32 C54.372,32,59.736,36.53,60.808,42.787 L60.808,46
+C60.808,47.104,61.704,48,62.808,48 S64.808,47.104,64.808,46 L64.808,44.163
+C65.278,44.069,65.726,44,66,44 C69.859,44,73,47.141,73,51 S69.859,58,66,58 Z" />
+</vector>

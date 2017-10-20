@@ -20,6 +20,7 @@ package you.devknights.minimalweather.ui.landing;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
@@ -109,6 +110,59 @@ public class LandingFragment extends Fragment {
         mSunriseText.setText(DateFormat.format("hh.mm", timeInMills));
         mWindText.setText(getString(R.string.wind_speed_in_miles, weather.getWindSpeed()));
         mTemperatureText.setText(temperatureInCelsius);
+
+
+        mWeatherStatusImage.setImageResource(getWeatherIcon(weather.getWeatherIcon()));
+    }
+
+
+    private
+    @DrawableRes
+    int getWeatherIcon(String icon) {
+        switch (icon) {
+            case "01d":
+            case "01n":
+                return R.drawable.clear_sky;
+
+            case "02d":
+            case "02n":
+                return R.drawable.few_clouds;
+
+            case "03d":
+            case "03n":
+                return R.drawable.scattered_clouds;
+
+            case "04d":
+            case "04n":
+                return R.drawable.broken_clouds;
+
+            case "09d":
+            case "09n":
+                return R.drawable.shower_rain;
+
+
+            case "10d":
+            case "10n":
+                return R.drawable.rain;
+
+
+            case "11d":
+            case "11n":
+                return R.drawable.thunderstorm;
+
+
+            case "13d":
+            case "13n":
+                return R.drawable.snow;
+
+
+            case "50d":
+            case "50n":
+                return R.drawable.mist;
+
+            default:
+                return R.drawable.clear_sky;
+        }
     }
 
     private static class LoadWeatherData extends AsyncTask<Void, Void, WeatherEntity> {

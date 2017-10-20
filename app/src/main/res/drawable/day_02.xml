@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2017 vinayagasundar
+  ~ Copyright 2017 randhirgupta
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportHeight="96"
+    android:viewportWidth="96">
+
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M72.556,42.187 C73.501,40.271,74,38.166,74,36 C74,28.28,67.72,22,60,22
+C55.399,22,51.105,24.281,48.504,28.021 C48.336,28.016,48.17,28,48.001,28
+C40.337,28,33.782,33.012,31.69,40.184 C31.113,40.079,30.508,40,30.001,40
+C23.935,40,19.001,44.935,19.001,51 S23.935,62,30.001,62 L66.001,62
+C72.066,62,77.001,57.065,77.001,51 C77.001,47.392,75.247,44.194,72.556,42.187 Z
+M60,26 C65.514,26,70,30.486,70,36 C70,37.548,69.64,39.05,68.964,40.417
+C68.019,40.152,67.028,40,66.001,40 C65.493,40,64.889,40.079,64.311,40.184
+C62.703,34.673,58.457,30.449,53.101,28.783 C54.939,27.03,57.397,26,60,26 Z
+M66.001,58 L30.001,58 C26.142,58,23.001,54.859,23.001,51 S26.142,44,30.001,44
+C30.278,44,30.724,44.068,31.194,44.162 L31.194,46
+C31.194,47.104,32.09,48,33.194,48 C34.298,48,35.194,47.104,35.194,46
+L35.194,42.781 C36.267,36.528,41.63,32,48.001,32
+C54.373,32,59.737,36.53,60.808,42.786 L60.808,46
+C60.808,47.104,61.704,48,62.808,48 S64.808,47.104,64.808,46 L64.808,44.163
+C65.279,44.069,65.727,44,66.001,44 C69.86,44,73.001,47.141,73.001,51
+S69.86,58,66.001,58 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M60,18 C61.104,18,62,17.104,62,16 L62,12 C62,10.896,61.104,10,60,10
+C58.895,10,58,10.896,58,12 L58,16 C58,17.104,58.895,18,60,18 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M84,34 L80,34 C78.895,34,78,34.896,78,36 S78.895,38,80,38 L84,38
+C85.104,38,86,37.104,86,36 S85.104,34,84,34 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M74.143,23.857 C74.655,23.857,75.166,23.662,75.557,23.271 L78.385,20.443
+C79.166,19.662,79.166,18.396,78.385,17.615
+C77.604,16.834,76.338,16.834,75.557,17.615 L72.729,20.443
+C71.948,21.224,71.948,22.49,72.729,23.271
+C73.119,23.662,73.631,23.857,74.143,23.857 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M44.443,23.271 C44.834,23.662,45.345,23.857,45.857,23.857
+C46.369,23.857,46.88,23.662,47.271,23.271
+C48.052,22.49,48.052,21.224,47.271,20.443 L44.443,17.615
+C43.662,16.834,42.396,16.834,41.615,17.615
+C40.834,18.396,40.834,19.662,41.615,20.443 L44.443,23.271 Z" />
+</vector>

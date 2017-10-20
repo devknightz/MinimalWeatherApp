@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2017 vinayagasundar
+  ~ Copyright 2017 randhirgupta
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportHeight="96"
+    android:viewportWidth="96">
+
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M62.142,35.858 C62.654,35.858,63.166,35.663,63.556,35.272 L66.385,32.443
+C67.166,31.662,67.166,30.396,66.385,29.615
+C65.604,28.834,64.337,28.834,63.557,29.615 L60.728,32.444
+C59.947,33.225,59.947,34.491,60.728,35.272
+C61.118,35.663,61.63,35.858,62.142,35.858 Z M30,48 C30,46.896,29.104,46,28,46
+L24,46 C22.896,46,22,46.896,22,48 S22.896,50,24,50 L28,50
+C29.104,50,30,49.104,30,48 Z M32.444,60.728 L29.615,63.557
+C28.834,64.338,28.834,65.604,29.615,66.385
+C30.005,66.776,30.517,66.971,31.029,66.971
+C31.541,66.971,32.053,66.776,32.443,66.385 L35.272,63.556
+C36.053,62.775,36.053,61.509,35.272,60.728
+C34.492,59.947,33.224,59.947,32.444,60.728 Z M32.444,35.272
+C32.834,35.663,33.346,35.858,33.858,35.858 S34.882,35.663,35.272,35.272
+C36.053,34.491,36.053,33.225,35.272,32.444 L32.443,29.615
+C31.663,28.834,30.395,28.834,29.615,29.615
+C28.834,30.396,28.834,31.662,29.615,32.443 L32.444,35.272 Z M48,30
+C49.104,30,50,29.104,50,28 L50,24 C50,22.896,49.104,22,48,22 S46,22.896,46,24
+L46,28 C46,29.104,46.896,30,48,30 Z M72,46 L68,46 C66.896,46,66,46.896,66,48
+S66.896,50,68,50 L72,50 C73.104,50,74,49.104,74,48 S73.104,46,72,46 Z
+M63.556,60.728 C62.776,59.947,61.508,59.947,60.728,60.728
+C59.947,61.509,59.947,62.775,60.728,63.556 L63.557,66.385
+C63.947,66.776,64.459,66.971,64.971,66.971
+C65.483,66.971,65.994,66.776,66.385,66.385
+C67.166,65.604,67.166,64.338,66.385,63.557 L63.556,60.728 Z M48,66
+C46.896,66,46,66.896,46,68 L46,72 C46,73.104,46.896,74,48,74 S50,73.104,50,72
+L50,68 C50,66.896,49.104,66,48,66 Z M48,34 C40.28,34,34,40.28,34,48
+S40.28,62,48,62 S62,55.72,62,48 S55.72,34,48,34 Z M48,58
+C42.486,58,38,53.514,38,48 S42.486,38,48,38 S58,42.486,58,48 S53.514,58,48,58 Z" />
+</vector>

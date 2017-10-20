@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2017 vinayagasundar
+  ~ Copyright 2017 randhirgupta
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportHeight="96"
+    android:viewportWidth="96">
+
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M66,40 C65.493,40,64.888,40.079,64.312,40.184 C62.218,33.012,55.663,28,48,28
+S33.782,33.012,31.689,40.184 C31.112,40.079,30.507,40,30,40
+C23.935,40,19,44.935,19,51 S23.935,62,30,62 C31.104,62,32,61.104,32,60
+S31.104,58,30,58 C26.14,58,23,54.859,23,51 S26.14,44,30,44
+C30.277,44,30.723,44.068,31.193,44.162 L31.193,46
+C31.193,47.104,32.089,48,33.193,48 S35.193,47.104,35.193,46 L35.193,42.779
+C36.268,36.527,41.631,32,48,32 S59.732,36.527,60.807,42.779 L60.807,46
+C60.807,47.104,61.703,48,62.807,48 S64.807,47.104,64.807,46 L64.807,44.162
+C65.277,44.068,65.723,44,66,44 C69.859,44,73,47.141,73,51 S69.859,58,66,58
+C64.896,58,64,58.896,64,60 S64.896,62,66,62 C72.065,62,77,57.065,77,51
+S72.065,40,66,40 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M45.732,62.464 C45.181,61.508,43.957,61.18,43,61.731
+C42.043,62.284,41.716,63.506,42.268,64.463 L43.268,66.195
+C43.638,66.837,44.31,67.195,45.002,67.195 C45.341,67.195,45.685,67.109,46,66.927
+C46.957,66.374,47.284,65.152,46.732,64.195 L45.732,62.464 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M40.732,53.804 C40.18,52.848,38.956,52.52,38,53.071
+C37.043,53.624,36.716,54.846,37.268,55.803 L38.268,57.535
+C38.638,58.177,39.31,58.535,40.002,58.535 C40.341,58.535,40.685,58.449,41,58.268
+C41.957,57.715,42.284,56.493,41.732,55.535 L40.732,53.804 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M43,58.269 C43.315,58.451,43.659,58.536,43.998,58.536
+C44.689,58.536,45.362,58.178,45.732,57.536 L46.732,55.804
+C47.284,54.847,46.957,53.624,46,53.072 C45.043,52.52,43.819,52.848,43.268,53.804
+L42.268,55.536 C41.716,56.493,42.043,57.716,43,58.269 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M41,61.731 C40.043,61.179,38.82,61.507,38.268,62.464 L37.268,64.196
+C36.716,65.153,37.043,66.376,38,66.928 C38.315,67.11,38.659,67.196,38.998,67.196
+C39.689,67.196,40.362,66.838,40.732,66.196 L41.732,64.464
+C42.284,63.507,41.957,62.284,41,61.731 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M40,60 C40,58.896,39.104,58,38,58 L36,58 C34.896,58,34,58.896,34,60
+S34.896,62,36,62 L38,62 C39.104,62,40,61.104,40,60 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M50,60 C50,58.896,49.104,58,48,58 L46,58 C44.896,58,44,58.896,44,60
+S44.896,62,46,62 L48,62 C49.104,62,50,61.104,50,60 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M60.732,71.268 C60.181,70.312,58.956,69.984,58,70.536
+C57.043,71.089,56.716,72.311,57.268,73.268 L58.268,75
+C58.638,75.642,59.31,76,60.002,76 C60.341,76,60.685,75.914,61,75.732
+C61.957,75.179,62.284,73.957,61.732,73 L60.732,71.268 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M55.732,62.607 C55.18,61.651,53.957,61.323,53,61.875
+C52.043,62.428,51.716,63.65,52.268,64.607 L53.268,66.339
+C53.638,66.981,54.31,67.339,55.002,67.339 C55.341,67.339,55.685,67.253,56,67.072
+C56.957,66.519,57.284,65.297,56.732,64.339 L55.732,62.607 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M58,67.072 C58.315,67.254,58.659,67.339,58.998,67.339
+C59.689,67.339,60.362,66.981,60.732,66.339 L61.732,64.607
+C62.284,63.65,61.957,62.427,61,61.875 C60.043,61.323,58.82,61.651,58.268,62.607
+L57.268,64.339 C56.716,65.297,57.043,66.52,58,67.072 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M56,70.535 C55.043,69.983,53.82,70.311,53.268,71.267 L52.268,72.999
+C51.716,73.956,52.043,75.179,53,75.731 C53.315,75.914,53.659,76,53.998,76
+C54.689,76,55.362,75.642,55.732,75 L56.732,73.268
+C57.284,72.311,56.957,71.088,56,70.535 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M55,68.804 C55,67.7,54.104,66.804,53,66.804 L51,66.804
+C49.896,66.804,49,67.7,49,68.804 S49.896,70.804,51,70.804 L53,70.804
+C54.104,70.804,55,69.908,55,68.804 Z" />
+    <path
+        android:fillColor="@color/dashboard_icon_color"
+        android:pathData="M63,66.804 L61,66.804 C59.896,66.804,59,67.7,59,68.804 S59.896,70.804,61,70.804
+L63,70.804 C64.104,70.804,65,69.908,65,68.804 S64.104,66.804,63,66.804 Z" />
+</vector>
