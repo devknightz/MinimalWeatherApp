@@ -20,7 +20,6 @@ package you.devknights.minimalweather.network;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import you.devknights.minimalweather.model.Forecast;
 import you.devknights.minimalweather.network.model.WeatherResponse;
 
 /**
@@ -39,8 +38,4 @@ public interface ApiService {
     Call<WeatherResponse> getWeatherDataWithLocationCall(@Query("lat") Double latitude,
                                                  @Query("lon") Double longitude,
                                                  @Query("appid") String apiKey);
-
-    @GET("forecast")
-    Call<Forecast> getForecastDataCall(@Query("q") String city,
-                                       @Query("appid") String apiKey);
 }
