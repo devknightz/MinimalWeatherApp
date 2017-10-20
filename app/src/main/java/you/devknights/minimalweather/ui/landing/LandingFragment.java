@@ -31,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -99,6 +100,8 @@ public class LandingFragment extends Fragment {
 
     private void bindData(WeatherEntity weather) {
         mCityText.setText(weather.getPlaceName());
+        mTimeText.setText(DateFormat.format("EEEE, hh:mm a", Calendar.getInstance()
+                .getTimeInMillis()));
 
         String temperatureInCelsius = getString(R.string.temp_in_celsius,
                 UnitConvUtil.kelvinToCelsius(weather.getTemperature()));
