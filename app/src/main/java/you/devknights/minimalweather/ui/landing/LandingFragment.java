@@ -136,13 +136,13 @@ public class LandingFragment extends Fragment {
 
                         long currentTime = System.currentTimeMillis();
 
-                        ((WeatherEntity) weather).setStartTime(currentTime);
-                        ((WeatherEntity) weather).setEndTime(currentTime + 1000);
+                        weather.setStartTime(currentTime);
+                        weather.setEndTime(currentTime + 1000);
 
                         AppDatabase.getInstance()
                                 .getDatabase()
                                 .weatherDAO()
-                                .insert((WeatherEntity) weather);
+                                .insert(weather);
                     }
                 }
 
