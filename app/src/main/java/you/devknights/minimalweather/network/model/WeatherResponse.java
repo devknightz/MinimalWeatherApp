@@ -179,7 +179,7 @@ public class WeatherResponse {
             weatherEntity.setWeatherIcon(weather.getIcon());
         }
 
-        weatherEntity.setTemperature(main.getPressure());
+        weatherEntity.setTemperature(main.getTemp());
         weatherEntity.setPressure(main.getPressure());
         weatherEntity.setHumidity(main.getHumidity());
         weatherEntity.setWindSpeed((float) wind.getSpeed());

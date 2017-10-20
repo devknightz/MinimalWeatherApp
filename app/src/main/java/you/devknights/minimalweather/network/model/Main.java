@@ -25,7 +25,7 @@ class Main {
 
     @SerializedName("temp")
     @Expose
-    private double temp;
+    private float temp;
     @SerializedName("pressure")
     @Expose
     private float pressure;
@@ -39,11 +39,11 @@ class Main {
     @Expose
     private double tempMax;
 
-    public double getTemp() {
+    public float getTemp() {
         return temp;
     }
 
-    public void setTemp(double temp) {
+    public void setTemp(float temp) {
         this.temp = temp;
     }
 
