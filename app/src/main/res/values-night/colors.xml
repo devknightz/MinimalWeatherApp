@@ -24,6 +24,7 @@
     <color name="windowBackgroundColor">@color/night_color</color>
 
     <color name="landingCityTextColor">@color/nightPrimaryTextColor</color>
+    <color name="weatherTemperatureTextColor">@color/nightPrimaryTextColor</color>
 
     <color name="dashboard_icon_color">@color/day_color</color>
 </resources>
