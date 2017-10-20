@@ -31,7 +31,7 @@ import you.devknights.minimalweather.model.Weather;
 @Entity(tableName = WeatherDatabase.TABLE_WEATHER)
 public class WeatherEntity implements Weather {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private long _id;
 
     ///////////////////////////////////////////////////////////////////////////
