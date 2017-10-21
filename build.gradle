@@ -52,8 +52,9 @@ ext {
     // App dependencies
     supportLibraryVersion = '26.1.0'
     constraintLayoutVersion = '1.0.2'
-    archLifecycleVersion = "1.0.0-alpha1"
-    archRoomVersion = "1.0.0-alpha1"
+    archLifecycleVersion = "1.0.0-rc1"
+    archRoomVersion = "1.0.0-rc1"
+    playService = "11.0.0"
 
     // Retrofit
     retrofitVersion = "2.3.0"

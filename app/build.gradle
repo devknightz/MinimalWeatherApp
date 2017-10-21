@@ -93,6 +93,8 @@ dependencies {
     compile 'android.arch.lifecycle:extensions:' + rootProject.archLifecycleVersion;
     compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion;
 
+    compile 'com.google.android.gms:play-services-location:' + rootProject.playService;
+
     compile 'com.squareup.retrofit2:retrofit:' + rootProject.retrofitVersion
     compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.retrofitLoggerVersion
     compile 'com.squareup.retrofit2:converter-gson:' + rootProject.retrofitGsonConvVersion
