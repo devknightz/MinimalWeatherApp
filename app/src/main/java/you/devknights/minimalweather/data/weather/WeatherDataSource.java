@@ -15,33 +15,19 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather.database.dao;
+package you.devknights.minimalweather.data.weather;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
+import android.location.Location;
 
-import java.util.List;
-
-import you.devknights.minimalweather.database.WeatherDatabase;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
 
 /**
- * A DAO interface for {@link WeatherEntity} model
  * @author vinayagasundar
  */
 
-@Dao
-public interface WeatherDAO {
+public interface WeatherDataSource {
 
-    @Insert
     void insert(WeatherEntity weatherEntity);
 
-    @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER)
-    List<WeatherEntity> getAll();
-
-    @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER +
-            " WHERE placeLat = :latitude AND placeLon = :longitude")
-    LiveData<WeatherEntity> getWeatherByLocation(String latitude, String longitude);
+    WeatherEntity getWeatherInfoByLocation(Location location);
 }

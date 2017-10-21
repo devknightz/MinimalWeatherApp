@@ -18,6 +18,7 @@
 package you.devknights.minimalweather.ui.landing;
 
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.location.Location;
@@ -27,24 +28,21 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.Calendar;
 
-import retrofit2.Call;
-import retrofit2.Response;
 import you.devknights.minimalweather.R;
-import you.devknights.minimalweather.database.AppDatabase;
+import you.devknights.minimalweather.data.weather.WeatherRepository;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
+import you.devknights.minimalweather.model.Resource;
+import you.devknights.minimalweather.model.Status;
 import you.devknights.minimalweather.network.ApiService;
 import you.devknights.minimalweather.network.NetworkClient;
-import you.devknights.minimalweather.network.model.WeatherResponse;
 import you.devknights.minimalweather.util.UnitConvUtil;
 
 /**
@@ -101,17 +99,21 @@ public class LandingFragment extends Fragment {
         mLandingViewModel.getLocation().observe(this, new Observer<Location>() {
             @Override
             public void onChanged(@Nullable Location location) {
-
-                Log.i(TAG, "onChanged: " + location);
-
-                new LoadWeatherData(location, new LoadWeatherData.Callback() {
-                    @Override
-                    public void onWeatherData(WeatherEntity weather) {
-                        bindData(weather);
-                    }
-                }).execute();
+                getDataFromLocation(location);
             }
         });
+    }
+
+    private void getDataFromLocation(Location location) {
+        LiveData<Resource<WeatherEntity>> resourceLiveData = WeatherRepository.getInstance()
+                .getWeatherInfoAsLiveData(location);
+
+        resourceLiveData.observe(this, weatherEntityResource -> {
+            if (weatherEntityResource != null && weatherEntityResource.status == Status.SUCCESS) {
+                bindData(weatherEntityResource.data);
+            }
+        });
+
     }
 
 
@@ -201,33 +203,46 @@ public class LandingFragment extends Fragment {
             WeatherEntity weather = null;
 
             ApiService apiService = NetworkClient.getApiService();
-            Call<WeatherResponse> weatherResponseCall = apiService
-                    .getWeatherDataWithLocationCall(location.getLatitude(),
-                            location.getLongitude(),
-                            "63b2611ca2ad0bd3c881be68e0d7b7ab");
+//            LiveData<WeatherResponse> responseLiveData = apiService.getWeatherDataWithLocationCall(location.getLatitude(),
+//                            location.getLongitude(),
+//                            "63b2611ca2ad0bd3c881be68e0d7b7ab");
+//
+//            responseLiveData.observeForever(new Observer<WeatherResponse>() {
+//                @Override
+//                public void onChanged(@Nullable WeatherResponse weatherResponse) {
+//                    responseLiveData.removeObserver(this);
+//                }
+//            });
 
-            try {
-                Response<WeatherResponse> response = weatherResponseCall.execute();
-                if (response != null) {
-                    WeatherResponse weatherResponse = response.body();
-                    if (weatherResponse != null) {
-                        weather = weatherResponse.buildWeather();
 
-                        long currentTime = System.currentTimeMillis();
 
-                        weather.setStartTime(currentTime);
-                        weather.setEndTime(currentTime + 1000);
-
-                        AppDatabase.getInstance()
-                                .getDatabase()
-                                .weatherDAO()
-                                .insert(weather);
-                    }
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            Call<WeatherResponse> weatherResponseCall = apiService
+//                    .getWeatherDataWithLocationCall(location.getLatitude(),
+//                            location.getLongitude(),
+//                            "63b2611ca2ad0bd3c881be68e0d7b7ab");
+//
+//            try {
+//                Response<WeatherResponse> response = weatherResponseCall.execute();
+//                if (response != null) {
+//                    WeatherResponse weatherResponse = response.body();
+//                    if (weatherResponse != null) {
+//                        weather = weatherResponse.buildWeather();
+//
+//                        long currentTime = System.currentTimeMillis();
+//
+//                        weather.setStartTime(currentTime);
+//                        weather.setEndTime(currentTime + 1000);
+//
+//                        AppDatabase.getInstance()
+//                                .getDatabase()
+//                                .weatherDAO()
+//                                .insert(weather);
+//                    }
+//                }
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
             return weather;
         }
 

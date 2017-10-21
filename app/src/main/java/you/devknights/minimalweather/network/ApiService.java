@@ -17,7 +17,8 @@
 
 package you.devknights.minimalweather.network;
 
-import retrofit2.Call;
+import android.arch.lifecycle.LiveData;
+
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import you.devknights.minimalweather.network.model.WeatherResponse;
@@ -31,11 +32,11 @@ import you.devknights.minimalweather.network.model.WeatherResponse;
 public interface ApiService {
 
     @GET("weather")
-    Call<WeatherResponse> getWeatherDataCall(@Query("q") String city,
-                                             @Query("appid") String apiKey);
+    LiveData<ApiResponse<WeatherResponse>> getWeatherDataCall(@Query("q") String city,
+                                                 @Query("appid") String apiKey);
 
     @GET("weather")
-    Call<WeatherResponse> getWeatherDataWithLocationCall(@Query("lat") Double latitude,
+    LiveData<ApiResponse<WeatherResponse>> getWeatherDataWithLocationCall(@Query("lat") Double latitude,
                                                  @Query("lon") Double longitude,
                                                  @Query("appid") String apiKey);
 }
