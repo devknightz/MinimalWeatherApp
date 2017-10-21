@@ -22,7 +22,6 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.location.Location;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
@@ -37,12 +36,10 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import you.devknights.minimalweather.R;
-import you.devknights.minimalweather.repo.weather.WeatherRepository;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
 import you.devknights.minimalweather.model.Resource;
 import you.devknights.minimalweather.model.Status;
-import you.devknights.minimalweather.network.ApiService;
-import you.devknights.minimalweather.network.NetworkClient;
+import you.devknights.minimalweather.repo.weather.WeatherRepository;
 import you.devknights.minimalweather.util.UnitConvUtil;
 
 /**
@@ -184,81 +181,6 @@ public class LandingFragment extends Fragment {
 
             default:
                 return R.drawable.clear_sky;
-        }
-    }
-
-    private static class LoadWeatherData extends AsyncTask<Void, Void, WeatherEntity> {
-
-        private Callback callback;
-
-        private Location location;
-
-        LoadWeatherData(Location location, Callback callback) {
-            this.location = location;
-            this.callback = callback;
-        }
-
-        @Override
-        protected WeatherEntity doInBackground(Void... params) {
-            WeatherEntity weather = null;
-
-            ApiService apiService = NetworkClient.getApiService();
-//            LiveData<WeatherResponse> responseLiveData = apiService.getWeatherDataWithLocationCall(location.getLatitude(),
-//                            location.getLongitude(),
-//                            "63b2611ca2ad0bd3c881be68e0d7b7ab");
-//
-//            responseLiveData.observeForever(new Observer<WeatherResponse>() {
-//                @Override
-//                public void onChanged(@Nullable WeatherResponse weatherResponse) {
-//                    responseLiveData.removeObserver(this);
-//                }
-//            });
-
-
-
-//            Call<WeatherResponse> weatherResponseCall = apiService
-//                    .getWeatherDataWithLocationCall(location.getLatitude(),
-//                            location.getLongitude(),
-//                            "63b2611ca2ad0bd3c881be68e0d7b7ab");
-//
-//            try {
-//                Response<WeatherResponse> response = weatherResponseCall.execute();
-//                if (response != null) {
-//                    WeatherResponse weatherResponse = response.body();
-//                    if (weatherResponse != null) {
-//                        weather = weatherResponse.buildWeather();
-//
-//                        long currentTime = System.currentTimeMillis();
-//
-//                        weather.setStartTime(currentTime);
-//                        weather.setEndTime(currentTime + 1000);
-//
-//                        AppDatabase.getInstance()
-//                                .getDatabase()
-//                                .weatherDAO()
-//                                .insert(weather);
-//                    }
-//                }
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-            return weather;
-        }
-
-        @Override
-        protected void onPostExecute(WeatherEntity weather) {
-            super.onPostExecute(weather);
-
-            if (weather != null) {
-                if (callback != null) {
-                    callback.onWeatherData(weather);
-                }
-            }
-        }
-
-        interface Callback {
-            void onWeatherData(WeatherEntity weather);
         }
     }
 }
