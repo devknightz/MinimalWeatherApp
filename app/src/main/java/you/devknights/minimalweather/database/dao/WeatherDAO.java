@@ -19,6 +19,7 @@ package you.devknights.minimalweather.database.dao;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -42,6 +43,14 @@ public interface WeatherDAO {
     List<WeatherEntity> getAll();
 
     @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER +
-            " WHERE placeLat = :latitude AND placeLon = :longitude AND endTime >= :currentTimeInSecs")
+            " WHERE placeLat = :latitude AND placeLon = :longitude" +
+            " AND endTime >= :currentTimeInSecs ORDER BY endTime DESC")
     LiveData<WeatherEntity> getWeatherByLocation(String latitude, String longitude, long currentTimeInSecs);
+
+    @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER
+            + " WHERE endTime <= :currentTimeInMills")
+    List<WeatherEntity> getAllExpiredData(long currentTimeInMills);
+
+    @Delete
+    void deleteWeatherData(List<WeatherEntity> weatherEntities);
 }

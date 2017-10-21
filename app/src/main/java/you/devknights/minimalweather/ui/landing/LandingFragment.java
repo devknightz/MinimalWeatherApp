@@ -42,7 +42,6 @@ import you.devknights.minimalweather.R;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
 import you.devknights.minimalweather.model.Resource;
 import you.devknights.minimalweather.model.Status;
-import you.devknights.minimalweather.repo.weather.WeatherRepository;
 import you.devknights.minimalweather.util.UnitConvUtil;
 
 /**
@@ -124,8 +123,8 @@ public class LandingFragment extends Fragment {
     }
 
     private void getDataFromLocation(Location location) {
-        LiveData<Resource<WeatherEntity>> resourceLiveData = WeatherRepository.getInstance()
-                .getWeatherInfoAsLiveData(location);
+        LiveData<Resource<WeatherEntity>> resourceLiveData = mLandingViewModel
+                .getWeatherData(location);
 
         resourceLiveData.observe(this, weatherEntityResource -> {
             if (weatherEntityResource != null && weatherEntityResource.status == Status.SUCCESS) {

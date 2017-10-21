@@ -23,6 +23,10 @@ import android.arch.lifecycle.LiveData;
 import android.location.Location;
 import android.support.annotation.NonNull;
 
+import you.devknights.minimalweather.database.entity.WeatherEntity;
+import you.devknights.minimalweather.model.Resource;
+import you.devknights.minimalweather.repo.weather.WeatherRepository;
+
 /**
  * @author vinayagasundar
  */
@@ -42,6 +46,11 @@ public class LandingViewModel extends AndroidViewModel {
         }
 
         return mLocation;
+    }
+
+
+    public LiveData<Resource<WeatherEntity>> getWeatherData(Location location) {
+        return WeatherRepository.getInstance().getWeatherInfoAsLiveData(location);
     }
 
 
