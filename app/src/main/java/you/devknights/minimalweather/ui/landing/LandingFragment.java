@@ -18,12 +18,16 @@
 package you.devknights.minimalweather.ui.landing;
 
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +66,9 @@ public class LandingFragment extends Fragment {
     private TextView mTemperatureText;
 
 
+    private LandingViewModel mLandingViewModel;
+
+
     public LandingFragment() {
         // Required empty public constructor
     }
@@ -89,12 +96,22 @@ public class LandingFragment extends Fragment {
         mWindText = (TextView) view.findViewById(R.id.windText);
         mTemperatureText = (TextView) view.findViewById(R.id.temperatureText);
 
-        new LoadWeatherData(new LoadWeatherData.Callback() {
+        mLandingViewModel = ViewModelProviders.of(this).get(LandingViewModel.class);
+
+        mLandingViewModel.getLocation().observe(this, new Observer<Location>() {
             @Override
-            public void onWeatherData(WeatherEntity weather) {
-                bindData(weather);
+            public void onChanged(@Nullable Location location) {
+
+                Log.i(TAG, "onChanged: " + location);
+
+                new LoadWeatherData(location, new LoadWeatherData.Callback() {
+                    @Override
+                    public void onWeatherData(WeatherEntity weather) {
+                        bindData(weather);
+                    }
+                }).execute();
             }
-        }).execute();
+        });
     }
 
 
@@ -172,7 +189,10 @@ public class LandingFragment extends Fragment {
 
         private Callback callback;
 
-        LoadWeatherData(Callback callback) {
+        private Location location;
+
+        LoadWeatherData(Location location, Callback callback) {
+            this.location = location;
             this.callback = callback;
         }
 
@@ -181,8 +201,10 @@ public class LandingFragment extends Fragment {
             WeatherEntity weather = null;
 
             ApiService apiService = NetworkClient.getApiService();
-            Call<WeatherResponse> weatherResponseCall = apiService.getWeatherDataCall("Bangalore",
-                    "63b2611ca2ad0bd3c881be68e0d7b7ab");
+            Call<WeatherResponse> weatherResponseCall = apiService
+                    .getWeatherDataWithLocationCall(location.getLatitude(),
+                            location.getLongitude(),
+                            "63b2611ca2ad0bd3c881be68e0d7b7ab");
 
             try {
                 Response<WeatherResponse> response = weatherResponseCall.execute();
