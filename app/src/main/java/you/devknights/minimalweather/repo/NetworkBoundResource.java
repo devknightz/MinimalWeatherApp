@@ -38,6 +38,7 @@ import you.devknights.minimalweather.network.ApiResponse;
  * @param <ResultType>
  * @param <RequestType>
  */
+@SuppressWarnings("WeakerAccess")
 public abstract class NetworkBoundResource<ResultType, RequestType> {
     private final AppExecutors appExecutors;
 
