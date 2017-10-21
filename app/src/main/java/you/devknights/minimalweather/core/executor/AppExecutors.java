@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather;
+package you.devknights.minimalweather.core.executor;
 
 import android.os.Handler;
 import android.os.Looper;

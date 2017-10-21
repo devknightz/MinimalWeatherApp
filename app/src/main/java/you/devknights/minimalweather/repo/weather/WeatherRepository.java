@@ -25,7 +25,7 @@ import android.support.annotation.Nullable;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-import you.devknights.minimalweather.AppExecutors;
+import you.devknights.minimalweather.core.executor.AppExecutors;
 import you.devknights.minimalweather.BuildConfig;
 import you.devknights.minimalweather.repo.NetworkBoundResource;
 import you.devknights.minimalweather.database.AppDatabase;

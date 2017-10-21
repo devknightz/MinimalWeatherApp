@@ -26,7 +26,7 @@ import android.support.annotation.WorkerThread;
 
 import java.util.Objects;
 
-import you.devknights.minimalweather.AppExecutors;
+import you.devknights.minimalweather.core.executor.AppExecutors;
 import you.devknights.minimalweather.model.Resource;
 import you.devknights.minimalweather.network.ApiResponse;
 
