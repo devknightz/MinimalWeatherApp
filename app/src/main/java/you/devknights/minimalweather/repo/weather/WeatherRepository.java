@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather.data.weather;
+package you.devknights.minimalweather.repo.weather;
 
 import android.arch.lifecycle.LiveData;
 import android.location.Location;
@@ -27,7 +27,7 @@ import java.text.DecimalFormat;
 
 import you.devknights.minimalweather.AppExecutors;
 import you.devknights.minimalweather.BuildConfig;
-import you.devknights.minimalweather.data.NetworkBoundResource;
+import you.devknights.minimalweather.repo.NetworkBoundResource;
 import you.devknights.minimalweather.database.AppDatabase;
 import you.devknights.minimalweather.database.WeatherDatabase;
 import you.devknights.minimalweather.database.dao.WeatherDAO;

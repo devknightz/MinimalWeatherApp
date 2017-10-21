@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather.data.weather;
+package you.devknights.minimalweather.repo.weather;
 
 import android.location.Location;
 

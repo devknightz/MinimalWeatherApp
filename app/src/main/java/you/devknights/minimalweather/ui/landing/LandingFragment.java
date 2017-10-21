@@ -37,7 +37,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import you.devknights.minimalweather.R;
-import you.devknights.minimalweather.data.weather.WeatherRepository;
+import you.devknights.minimalweather.repo.weather.WeatherRepository;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
 import you.devknights.minimalweather.model.Resource;
 import you.devknights.minimalweather.model.Status;

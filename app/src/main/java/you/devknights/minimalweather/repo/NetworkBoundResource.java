@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather.data;
+package you.devknights.minimalweather.repo;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
