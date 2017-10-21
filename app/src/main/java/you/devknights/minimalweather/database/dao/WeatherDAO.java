@@ -42,6 +42,6 @@ public interface WeatherDAO {
     List<WeatherEntity> getAll();
 
     @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER +
-            " WHERE placeLat = :latitude AND placeLon = :longitude")
-    LiveData<WeatherEntity> getWeatherByLocation(String latitude, String longitude);
+            " WHERE placeLat = :latitude AND placeLon = :longitude AND endTime >= :currentTimeInSecs")
+    LiveData<WeatherEntity> getWeatherByLocation(String latitude, String longitude, long currentTimeInSecs);
 }

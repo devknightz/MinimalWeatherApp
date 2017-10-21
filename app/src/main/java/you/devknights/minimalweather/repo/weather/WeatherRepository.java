@@ -25,9 +25,8 @@ import android.support.annotation.Nullable;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-import you.devknights.minimalweather.core.executor.AppExecutors;
 import you.devknights.minimalweather.BuildConfig;
-import you.devknights.minimalweather.repo.NetworkBoundResource;
+import you.devknights.minimalweather.core.executor.AppExecutors;
 import you.devknights.minimalweather.database.AppDatabase;
 import you.devknights.minimalweather.database.WeatherDatabase;
 import you.devknights.minimalweather.database.dao.WeatherDAO;
@@ -37,6 +36,7 @@ import you.devknights.minimalweather.network.ApiResponse;
 import you.devknights.minimalweather.network.ApiService;
 import you.devknights.minimalweather.network.NetworkClient;
 import you.devknights.minimalweather.network.model.WeatherResponse;
+import you.devknights.minimalweather.repo.NetworkBoundResource;
 
 /**
  * @author vinayagasundar
@@ -72,6 +72,9 @@ public final class WeatherRepository {
             @Override
             protected void saveCallResult(@NonNull WeatherResponse item) {
                 WeatherEntity weatherEntity = item.buildWeather();
+                long startTime = System.currentTimeMillis();
+                weatherEntity.setStartTime(startTime);
+                weatherEntity.setEndTime(startTime + 300000);
                 mWeatherDAO.insert(weatherEntity);
             }
 
@@ -89,7 +92,7 @@ public final class WeatherRepository {
                 String latitude = decimalFormat.format(location.getLatitude());
                 String longitude = decimalFormat.format(location.getLongitude());
 
-                return mWeatherDAO.getWeatherByLocation(latitude, longitude);
+                return mWeatherDAO.getWeatherByLocation(latitude, longitude, System.currentTimeMillis());
             }
 
             @NonNull
