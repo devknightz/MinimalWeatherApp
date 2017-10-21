@@ -18,13 +18,16 @@
 package you.devknights.minimalweather.ui.landing;
 
 
+import android.Manifest;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -46,6 +49,12 @@ import you.devknights.minimalweather.util.UnitConvUtil;
  * A simple {@link Fragment} subclass.
  */
 public class LandingFragment extends Fragment {
+
+    private static final int PERMISSION_REQUEST_CODE = 1420;
+    private static final String[] PERMISSIONS = {
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+    };
 
     private static final String TAG = "LandingFragment";
 
@@ -93,12 +102,25 @@ public class LandingFragment extends Fragment {
 
         mLandingViewModel = ViewModelProviders.of(this).get(LandingViewModel.class);
 
-        mLandingViewModel.getLocation().observe(this, new Observer<Location>() {
-            @Override
-            public void onChanged(@Nullable Location location) {
-                getDataFromLocation(location);
-            }
-        });
+        if (!isPermissionGranted()) {
+            requestPermissions(PERMISSIONS, PERMISSION_REQUEST_CODE);
+        } else {
+            startLocationUpdates();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            startLocationUpdates();
+        }
+    }
+
+    private void startLocationUpdates() {
+        mLandingViewModel.getLocation().observe(this, this::getDataFromLocation);
     }
 
     private void getDataFromLocation(Location location) {
@@ -133,6 +155,14 @@ public class LandingFragment extends Fragment {
 
         mWeatherStatusImage.setImageResource(getWeatherIcon(weather.getWeatherIcon()));
     }
+
+    private boolean isPermissionGranted() {
+        return ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+
 
 
     private
