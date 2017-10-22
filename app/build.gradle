@@ -102,9 +102,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressCoreVersion", {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:gridlayout-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
@@ -121,6 +119,18 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:" + rootProject.archRoomVersion;
 
     testCompile "junit:junit:$rootProject.ext.junitVersion"
+    testCompile "com.squareup.okhttp3:mockwebserver:$rootProject.ext.mockWebServer"
+    testCompile("android.arch.core:core-testing:$rootProject.archLifecycleVersion", {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
+    testCompile "org.mockito:mockito-core:$rootProject.ext.mockito"
+    testCompile "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrest"
+
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressCoreVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 
     debugCompile "com.amitshekhar.android:debug-db:$rootProject.ext.debugDatabase"
 
