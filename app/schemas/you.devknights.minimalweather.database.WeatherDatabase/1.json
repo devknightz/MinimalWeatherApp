@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d364ad146e14f9bcff9a8909a786219f",
+    "identityHash": "91d76fa81d28e40b962d2295927c207e",
     "entities": [
       {
         "tableName": "weather",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `endTime` INTEGER NOT NULL, `humidity` REAL NOT NULL, `placeId` INTEGER NOT NULL, `placeLat` REAL NOT NULL, `placeLon` REAL NOT NULL, `placeName` TEXT, `pressure` REAL NOT NULL, `startTime` INTEGER NOT NULL, `sunriseTime` INTEGER NOT NULL, `sunsetTime` INTEGER NOT NULL, `temperature` REAL NOT NULL, `weatherDescription` TEXT, `weatherIcon` TEXT, `weatherId` INTEGER NOT NULL, `weatherMain` TEXT, `windSpeed` REAL NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `placeId` INTEGER NOT NULL, `placeName` TEXT, `placeLat` REAL NOT NULL, `placeLon` REAL NOT NULL, `weatherId` INTEGER NOT NULL, `weatherMain` TEXT, `weatherDescription` TEXT, `weatherIcon` TEXT, `temperature` REAL NOT NULL, `pressure` REAL NOT NULL, `humidity` REAL NOT NULL, `windSpeed` REAL NOT NULL, `sunriseTime` INTEGER NOT NULL, `sunsetTime` INTEGER NOT NULL, `startTime` INTEGER NOT NULL, `endTime` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "_id",
@@ -15,22 +15,16 @@
             "notNull": true
           },
           {
-            "fieldPath": "endTime",
-            "columnName": "endTime",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "humidity",
-            "columnName": "humidity",
-            "affinity": "REAL",
-            "notNull": true
-          },
-          {
             "fieldPath": "placeId",
             "columnName": "placeId",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "placeName",
+            "columnName": "placeName",
+            "affinity": "TEXT",
+            "notNull": false
           },
           {
             "fieldPath": "placeLat",
@@ -45,10 +39,34 @@
             "notNull": true
           },
           {
-            "fieldPath": "placeName",
-            "columnName": "placeName",
+            "fieldPath": "weatherId",
+            "columnName": "weatherId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weatherMain",
+            "columnName": "weatherMain",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "weatherDescription",
+            "columnName": "weatherDescription",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "weatherIcon",
+            "columnName": "weatherIcon",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "temperature",
+            "columnName": "temperature",
+            "affinity": "REAL",
+            "notNull": true
           },
           {
             "fieldPath": "pressure",
@@ -57,9 +75,15 @@
             "notNull": true
           },
           {
-            "fieldPath": "startTime",
-            "columnName": "startTime",
-            "affinity": "INTEGER",
+            "fieldPath": "humidity",
+            "columnName": "humidity",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "windSpeed",
+            "columnName": "windSpeed",
+            "affinity": "REAL",
             "notNull": true
           },
           {
@@ -75,39 +99,15 @@
             "notNull": true
           },
           {
-            "fieldPath": "temperature",
-            "columnName": "temperature",
-            "affinity": "REAL",
-            "notNull": true
-          },
-          {
-            "fieldPath": "weatherDescription",
-            "columnName": "weatherDescription",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "weatherIcon",
-            "columnName": "weatherIcon",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "weatherId",
-            "columnName": "weatherId",
+            "fieldPath": "startTime",
+            "columnName": "startTime",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "weatherMain",
-            "columnName": "weatherMain",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "windSpeed",
-            "columnName": "windSpeed",
-            "affinity": "REAL",
+            "fieldPath": "endTime",
+            "columnName": "endTime",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -123,7 +123,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d364ad146e14f9bcff9a8909a786219f\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"91d76fa81d28e40b962d2295927c207e\")"
     ]
   }
 }
