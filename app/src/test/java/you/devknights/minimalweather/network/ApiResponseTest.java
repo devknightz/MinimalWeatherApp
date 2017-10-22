@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather.api;
+package you.devknights.minimalweather.network;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -26,7 +26,6 @@ import org.junit.runners.MethodSorters;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
-import you.devknights.minimalweather.network.ApiResponse;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

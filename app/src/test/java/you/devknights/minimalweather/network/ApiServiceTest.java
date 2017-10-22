@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather.api;
+package you.devknights.minimalweather.network;
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule;
 
@@ -40,8 +40,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import you.devknights.minimalweather.BuildConfig;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
-import you.devknights.minimalweather.network.ApiService;
-import you.devknights.minimalweather.network.LiveDataCallAdapterFactory;
 import you.devknights.minimalweather.network.model.WeatherResponse;
 
 import static org.hamcrest.MatcherAssert.assertThat;
