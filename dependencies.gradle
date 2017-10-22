@@ -1,0 +1,76 @@
+/*
+ * Copyright 2017 vinayagasundar
+ * Copyright 2017 randhirgupta
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+ext {
+    // App dependencies
+    supportLibraryVersion = '26.1.0'
+    constraintLayoutVersion = '1.0.2'
+    archLifecycleVersion = "1.0.0-rc1"
+    archRoomVersion = "1.0.0-rc1"
+    playService = "11.0.0"
+
+    // Retrofit
+    retrofitVersion = "2.3.0"
+    retrofitLoggerVersion = "3.4.1"
+    retrofitGsonConvVersion = "2.1.0"
+
+    // Test
+    junitVersion = '4.12'
+    espressCoreVersion = '2.2.2'
+    mockWebServer = '3.8.0'
+    mockito = "2.7.19"
+    mockito_all = "1.10.19"
+    hamcrest = "1.3"
+
+    // Debug Only
+    debugDatabase = '1.0.0'
+
+    dependenices = [
+            // Support Libs
+            appCompatLib   : "com.android.support:appcompat-v7:$supportLibraryVersion",
+            gridLayoutLib  : "com.android.support:gridlayout-v7:$supportLibraryVersion",
+            constraintLib  : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
+
+            // Arch Components
+            archExtension  : "android.arch.lifecycle:extensions:$archLifecycleVersion",
+            roomRuntime    : "android.arch.persistence.room:runtime:$archRoomVersion",
+
+            archCompiler   : "android.arch.lifecycle:compiler:$archLifecycleVersion",
+            roomCompiler   : "android.arch.persistence.room:compiler:$archRoomVersion",
+
+            // Location Tracker
+            playLocation   : "com.google.android.gms:play-services-location:$playService",
+
+            // Retrofit
+            retrofit2      : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofit2Logger: "com.squareup.okhttp3:logging-interceptor:$retrofitLoggerVersion",
+            gsonConverter  : "com.squareup.retrofit2:converter-gson:$retrofitGsonConvVersion",
+
+            // Test
+            junitLibs      : "junit:junit:$junitVersion",
+            mockWebServer  : "com.squareup.okhttp3:mockwebserver:$mockWebServer",
+            archCoreTesting: "android.arch.core:core-testing:$archLifecycleVersion",
+            mockitoCore    : "org.mockito:mockito-core:$mockito",
+            hamcrest       : "org.hamcrest:hamcrest-all:$hamcrest",
+
+            espressoCore   : "com.android.support.test.espresso:espresso-core:$espressCoreVersion",
+
+            // Android Debug Database
+            debugDB        : "com.amitshekhar.android:debug-db:$debugDatabase",
+
+    ]
+}

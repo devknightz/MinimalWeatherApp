@@ -17,6 +17,8 @@
 
 apply plugin: 'com.android.application'
 
+def globalConf = rootProject.ext
+
 
 /* Load the API keys from Properties file */
 Properties properties = new Properties()
@@ -28,8 +30,8 @@ def debugWeatherAPI = properties['debugWeatherAPI']
 
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion globalConf.compileSdkVersion
+    buildToolsVersion globalConf.buildToolsVersion
 
     defaultConfig {
         def versionMajor = 0
@@ -41,8 +43,8 @@ android {
 
         applicationId "you.devknights.minimalweather"
 
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion globalConf.minSdkVersion
+        targetSdkVersion globalConf.targetSdkVersion
 
         versionCode versionCodeFinal
         versionName "${versionFullName}"
@@ -103,36 +105,38 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
-    compile "com.android.support:gridlayout-v7:$rootProject.ext.supportLibraryVersion"
-    compile "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
-    compile 'android.arch.lifecycle:extensions:' + rootProject.archLifecycleVersion;
-    compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion;
+    Map<String, String> deps = globalConf.dependenices
 
-    compile 'com.google.android.gms:play-services-location:' + rootProject.playService;
+    compile deps.appCompatLib
+    compile deps.gridLayoutLib
+    compile deps.constraintLib
+    compile deps.archExtension
+    compile deps.roomRuntime
 
-    compile 'com.squareup.retrofit2:retrofit:' + rootProject.retrofitVersion
-    compile 'com.squareup.okhttp3:logging-interceptor:' + rootProject.retrofitLoggerVersion
-    compile 'com.squareup.retrofit2:converter-gson:' + rootProject.retrofitGsonConvVersion
+    compile deps.playLocation
 
-    annotationProcessor "android.arch.lifecycle:compiler:" + rootProject.archLifecycleVersion;
-    annotationProcessor "android.arch.persistence.room:compiler:" + rootProject.archRoomVersion;
+    compile deps.retrofit2
+    compile deps.retrofit2Logger
+    compile deps.gsonConverter
 
-    testCompile "junit:junit:$rootProject.ext.junitVersion"
-    testCompile "com.squareup.okhttp3:mockwebserver:$rootProject.ext.mockWebServer"
-    testCompile("android.arch.core:core-testing:$rootProject.archLifecycleVersion", {
+    annotationProcessor deps.archCompiler
+    annotationProcessor deps.roomCompiler
+
+    testCompile deps.junitLibs
+    testCompile deps.mockWebServer
+    testCompile( deps.archCoreTesting, {
         exclude group: 'com.android.support', module: 'support-compat'
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-core-utils'
     })
-    testCompile "org.mockito:mockito-core:$rootProject.ext.mockito"
-    testCompile "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrest"
+    testCompile deps.mockitoCore
+    testCompile deps.hamcrest
 
-    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressCoreVersion", {
+    androidTestCompile(deps.espressoCore, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    debugCompile "com.amitshekhar.android:debug-db:$rootProject.ext.debugDatabase"
+    debugCompile deps.debugDB
 
 
 }
