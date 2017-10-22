@@ -19,6 +19,8 @@ package you.devknights.minimalweather.ui.landing;
 
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.pm.PackageManager;
@@ -34,6 +36,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -68,6 +71,9 @@ public class LandingFragment extends Fragment {
     private TextView mWindText;
     private TextView mTemperatureText;
 
+    private ProgressBar mLoadingProgressBar;
+    private View mDetailContainer;
+
 
     private LandingViewModel mLandingViewModel;
 
@@ -98,6 +104,11 @@ public class LandingFragment extends Fragment {
         mSunriseText = (TextView) view.findViewById(R.id.sunriseText);
         mWindText = (TextView) view.findViewById(R.id.windText);
         mTemperatureText = (TextView) view.findViewById(R.id.temperatureText);
+
+        mLoadingProgressBar = (ProgressBar) view.findViewById(R.id.loadingProgressBar);
+        mDetailContainer = view.findViewById(R.id.detailContainer);
+
+        mLoadingProgressBar.setVisibility(View.VISIBLE);
 
         mLandingViewModel = ViewModelProviders.of(this).get(LandingViewModel.class);
 
@@ -153,6 +164,14 @@ public class LandingFragment extends Fragment {
 
 
         mWeatherStatusImage.setImageResource(getWeatherIcon(weather.getWeatherIcon()));
+
+        mDetailContainer.setAlpha(0f);
+        mDetailContainer.setVisibility(View.VISIBLE);
+        mLoadingProgressBar.setVisibility(View.GONE);
+        mDetailContainer.animate()
+                .alpha(1)
+                .setDuration(400)
+                .start();
     }
 
     private boolean isPermissionGranted() {

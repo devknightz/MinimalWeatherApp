@@ -73,4 +73,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="AppTheme.Landing.ProgressBar" parent="Theme.AppCompat.Light">
+            <item name="colorAccent">@color/progressBarColor</item>
+            <item name="android:progressBackgroundTint">@color/progressBarBackgroundTint</item>
+    </style>
+
 </resources>

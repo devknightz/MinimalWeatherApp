@@ -14,158 +14,174 @@
   ~  See the License for the specific language governing permissions and
   ~  limitations under the License.
   -->
-
-<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/landing_screen_default_bottom_margin"
-    app:columnCount="3"
     tools:context="you.devknights.minimalweather.ui.landing.LandingFragment">
 
-
-    <TextView
-        android:id="@+id/cityText"
-        style="@style/AppTheme.Landing.CityTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_columnSpan="3"
-        app:layout_gravity="fill_horizontal"
-        tools:text="Paris" />
-
-    <TextView
-        android:id="@+id/timeText"
-        style="@style/AppTheme.Landing.TimeTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_columnSpan="3"
-        app:layout_gravity="fill_horizontal"
-        android:layout_marginTop="@dimen/spacing_small"
-        tools:text="Sunday 9:00 AM" />
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/detailContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/landing_screen_default_bottom_margin"
+        android:visibility="invisible"
+        app:columnCount="3">
 
 
-    <ImageView
-        android:id="@+id/weatherStatusImage"
-        android:layout_width="@dimen/landing_screen_weather_status_image_width"
-        android:layout_height="@dimen/landing_screen_weather_status_image_height"
-        android:contentDescription="@string/desc_weather_status_image"
-        app:layout_columnSpan="3"
-        app:layout_gravity="center_horizontal|center"
-        app:srcCompat="@drawable/wind" />
+        <TextView
+            android:id="@+id/cityText"
+            style="@style/AppTheme.Landing.CityTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_columnSpan="3"
+            app:layout_gravity="fill_horizontal"
+            tools:text="Paris" />
 
-    <TextView
-        android:id="@+id/weatherTemperatureText"
-        style="@style/AppTheme.Landing.TemperatureTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_columnSpan="3"
-        app:layout_gravity="fill_horizontal"
-        tools:text="8&#x2103;" />
-
-    <TextView
-        android:id="@+id/timeRelatedMessageText"
-        style="@style/AppTheme.Landing.TimeMessageTextStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_large"
-        android:gravity="center"
-        app:layout_columnSpan="3"
-        app:layout_gravity="fill_horizontal"
-        tools:text="Good Morning\nParis" />
-
-    <ImageView
-        android:id="@+id/sunriseImage"
-        android:layout_width="@dimen/landing_screen_info_image_width"
-        android:layout_height="@dimen/landing_screen_info_image_height"
-        android:contentDescription="@string/desc_sunrise"
-        app:layout_columnWeight="1"
-        app:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/sun_rise" />
-
-    <ImageView
-        android:id="@+id/windImage"
-        android:layout_width="@dimen/landing_screen_info_image_width"
-        android:layout_height="@dimen/landing_screen_info_image_height"
-        android:contentDescription="@string/desc_wind"
-        app:layout_columnWeight="1"
-        app:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/wind" />
-
-    <ImageView
-        android:id="@+id/temperatureImage"
-        android:layout_width="@dimen/landing_screen_info_image_width"
-        android:layout_height="@dimen/landing_screen_info_image_height"
-        android:contentDescription="@string/desc_temperature"
-        app:layout_columnWeight="1"
-        app:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/temperature" />
+        <TextView
+            android:id="@+id/timeText"
+            style="@style/AppTheme.Landing.TimeTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:gravity="center"
+            app:layout_columnSpan="3"
+            app:layout_gravity="fill_horizontal"
+            tools:text="Sunday 9:00 AM" />
 
 
-    <TextView
-        android:id="@+id/sunriseLabelText"
-        style="@style/AppTheme.Landing.WeatherInfoLabelTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_sunrise"
-        app:layout_columnWeight="1"
-        app:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/sun_rise" />
+        <ImageView
+            android:id="@+id/weatherStatusImage"
+            android:layout_width="@dimen/landing_screen_weather_status_image_width"
+            android:layout_height="@dimen/landing_screen_weather_status_image_height"
+            android:contentDescription="@string/desc_weather_status_image"
+            app:layout_columnSpan="3"
+            app:layout_gravity="center_horizontal|center"
+            app:srcCompat="@drawable/wind" />
 
-    <TextView
-        android:id="@+id/windLabelText"
-        style="@style/AppTheme.Landing.WeatherInfoLabelTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_wind"
-        app:layout_columnWeight="1"
-        app:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/wind" />
+        <TextView
+            android:id="@+id/weatherTemperatureText"
+            style="@style/AppTheme.Landing.TemperatureTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_columnSpan="3"
+            app:layout_gravity="fill_horizontal"
+            tools:text="8&#x2103;" />
 
-    <TextView
-        android:id="@+id/temperatureLabelText"
-        style="@style/AppTheme.Landing.WeatherInfoLabelTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_temperature"
-        app:layout_columnWeight="1"
-        app:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/temperature" />
+        <TextView
+            android:id="@+id/timeRelatedMessageText"
+            style="@style/AppTheme.Landing.TimeMessageTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:gravity="center"
+            app:layout_columnSpan="3"
+            app:layout_gravity="fill_horizontal"
+            tools:text="Good Morning\nParis" />
 
+        <ImageView
+            android:id="@+id/sunriseImage"
+            android:layout_width="@dimen/landing_screen_info_image_width"
+            android:layout_height="@dimen/landing_screen_info_image_height"
+            android:contentDescription="@string/desc_sunrise"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/sun_rise" />
 
-    <TextView
-        android:id="@+id/sunriseText"
-        style="@style/AppTheme.Landing.WeatherInfoTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_columnWeight="1"
-        app:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/sun_rise"
-        tools:text="6.00" />
+        <ImageView
+            android:id="@+id/windImage"
+            android:layout_width="@dimen/landing_screen_info_image_width"
+            android:layout_height="@dimen/landing_screen_info_image_height"
+            android:contentDescription="@string/desc_wind"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/wind" />
 
-    <TextView
-        android:id="@+id/windText"
-        style="@style/AppTheme.Landing.WeatherInfoTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_columnWeight="1"
-        app:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/wind"
-        android:textAllCaps="false"
-        tools:text="4m/s" />
-
-    <TextView
-        android:id="@+id/temperatureText"
-        style="@style/AppTheme.Landing.WeatherInfoTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_columnWeight="1"
-        app:layout_gravity="center_horizontal"
-        app:srcCompat="@drawable/temperature"
-        tools:text="8&#x2103;" />
+        <ImageView
+            android:id="@+id/temperatureImage"
+            android:layout_width="@dimen/landing_screen_info_image_width"
+            android:layout_height="@dimen/landing_screen_info_image_height"
+            android:contentDescription="@string/desc_temperature"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/temperature" />
 
 
-</android.support.v7.widget.GridLayout>
+        <TextView
+            android:id="@+id/sunriseLabelText"
+            style="@style/AppTheme.Landing.WeatherInfoLabelTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_sunrise"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/sun_rise" />
+
+        <TextView
+            android:id="@+id/windLabelText"
+            style="@style/AppTheme.Landing.WeatherInfoLabelTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_wind"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/wind" />
+
+        <TextView
+            android:id="@+id/temperatureLabelText"
+            style="@style/AppTheme.Landing.WeatherInfoLabelTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_temperature"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/temperature" />
+
+
+        <TextView
+            android:id="@+id/sunriseText"
+            style="@style/AppTheme.Landing.WeatherInfoTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/sun_rise"
+            tools:text="6.00" />
+
+        <TextView
+            android:id="@+id/windText"
+            style="@style/AppTheme.Landing.WeatherInfoTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/wind"
+            tools:text="4m/s" />
+
+        <TextView
+            android:id="@+id/temperatureText"
+            style="@style/AppTheme.Landing.WeatherInfoTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/temperature"
+            tools:text="8&#x2103;" />
+
+    </android.support.v7.widget.GridLayout>
+
+    <ProgressBar
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:theme="@style/AppTheme.Landing.ProgressBar"
+        android:id="@+id/loadingProgressBar"
+        android:layout_marginStart="@dimen/padding_large"
+        android:layout_marginEnd="@dimen/padding_large"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</FrameLayout>

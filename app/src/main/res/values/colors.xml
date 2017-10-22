@@ -42,6 +42,9 @@
     <color name="landingCityTextColor">@color/dayPrimaryTextColor</color>
     <color name="weatherTemperatureTextColor">@color/dayPrimaryTextColor</color>
 
+    <color name="progressBarColor">@color/night_color</color>
+    <color name="progressBarBackgroundTint">@color/day_color</color>
+
     <color name="landingDividerBackgroundColor">@android:color/holo_blue_bright</color>
 
     <color name="dashboard_icon_color">@color/night_color</color>
