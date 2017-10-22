@@ -49,7 +49,6 @@ script:
 before_deploy:
 - cd app/build/outputs/apk/
 - mv app-release.apk MinimalWeatherApp.apk
-- "${ANDROID_HOME}build-tools/25.0.3/zipalign -v 4 app-release-unsigned.apk MinimalWeatherApp.apk"
 deploy:
   provider: releases
   file: MinimalWeatherApp.apk
