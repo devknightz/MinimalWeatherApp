@@ -19,11 +19,11 @@ apply plugin: 'com.android.application'
 
 
 /* Load the API keys from Properties file */
-//Properties properties = new Properties()
-//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+Properties properties = new Properties()
+properties.load(project.rootProject.file('keys.properties').newDataInputStream())
 
-def releaseWeatherAPI = "63b2611ca2ad0bd3c881be68e0d7b7ab"
-def debugWeatherAPI = "63b2611ca2ad0bd3c881be68e0d7b7ab"
+def releaseWeatherAPI = properties['releaseWeatherAPI']
+def debugWeatherAPI = properties['debugWeatherAPI']
 
 
 
@@ -66,11 +66,20 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            storeFile file("${properties['keystore']}")
+            storePassword "${properties['keystore_password']}"
+            keyAlias "${properties['key_alias']}"
+            keyPassword "${properties['key_password']}"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
+            signingConfig signingConfigs.release
             buildConfigField("String", "OPEN_WEATHER_API_KEY", "\"$releaseWeatherAPI\"")
         }
 

@@ -34,7 +34,9 @@ android:
   - google-gdk-license-.+
 before_install:
 - openssl aes-256-cbc -K $encrypted_c684be8710f9_key -iv $encrypted_c684be8710f9_iv
-  -in release_build/weather_app.jks.enc -out weather_app.jks -d
+   -in release_build/secrets.tar.enc -out secrets.tar -d
+- tar xvf secrets.tar
+- mv weather_app.jks app/weather_app.jks
 - chmod +x gradlew
 - "./gradlew dependencies || true"
 before_script:
@@ -45,11 +47,8 @@ before_script:
 script:
 - "./gradlew clean assembleRelease -PdisablePreDex --stacktrace"
 before_deploy:
-- cp $TRAVIS_BUILD_DIR/weather_app.jks $HOME
 - cd app/build/outputs/apk/
-- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/weather_app.jks
-  -storepass $keystore_password -keypass $alias_password app-release-unsigned.apk weather_app
-- jarsigner -verify app-release-unsigned.apk
+- mv app-release.apk MinimalWeatherApp.apk
 - "${ANDROID_HOME}build-tools/25.0.3/zipalign -v 4 app-release-unsigned.apk MinimalWeatherApp.apk"
 deploy:
   provider: releases
