@@ -19,23 +19,13 @@ package you.devknights.minimalweather;
 
 import android.app.Activity;
 import android.app.Application;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatDelegate;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import you.devknights.minimalweather.core.executor.AppExecutors;
-import you.devknights.minimalweather.database.AppDatabase;
-import you.devknights.minimalweather.database.WeatherDatabase;
-import you.devknights.minimalweather.database.dao.WeatherDAO;
-import you.devknights.minimalweather.database.entity.WeatherEntity;
 import you.devknights.minimalweather.di.AppInjector;
 
 /**
@@ -65,29 +55,5 @@ public class MinimalWeatherApp extends Application implements HasActivityInjecto
     @Override
     public AndroidInjector<Activity> activityInjector() {
         return dispatchingAndroidInjector;
-    }
-
-    private void checkForExpiredData() {
-        LiveData<Boolean> isDbCreated = AppDatabase.getInstance().isDatabaseCreated();
-        isDbCreated.observeForever(new Observer<Boolean>() {
-            @Override
-            public void onChanged(@Nullable Boolean aBoolean) {
-                if (aBoolean != null && aBoolean) {
-                    AppExecutors.getInstance().diskIO().execute(() -> {
-                        WeatherDatabase database = AppDatabase.getInstance().getDatabase();
-                        if (database != null) {
-                            WeatherDAO weatherDAO = database.weatherDAO();
-                            List<WeatherEntity> weatherEntities = weatherDAO
-                                    .getAllExpiredData(System.currentTimeMillis());
-
-                            if (weatherEntities != null && weatherEntities.size() > 0) {
-                                weatherDAO.deleteWeatherData(weatherEntities);
-                            }
-                        }
-                    });
-                    isDbCreated.removeObserver(this);
-                }
-            }
-        });
     }
 }

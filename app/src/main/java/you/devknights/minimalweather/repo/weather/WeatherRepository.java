@@ -30,14 +30,11 @@ import javax.inject.Singleton;
 
 import you.devknights.minimalweather.BuildConfig;
 import you.devknights.minimalweather.core.executor.AppExecutors;
-import you.devknights.minimalweather.database.AppDatabase;
-import you.devknights.minimalweather.database.WeatherDatabase;
 import you.devknights.minimalweather.database.dao.WeatherDAO;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
 import you.devknights.minimalweather.model.Resource;
 import you.devknights.minimalweather.network.ApiResponse;
 import you.devknights.minimalweather.network.ApiService;
-import you.devknights.minimalweather.network.NetworkClient;
 import you.devknights.minimalweather.network.model.WeatherResponse;
 import you.devknights.minimalweather.repo.NetworkBoundResource;
 
