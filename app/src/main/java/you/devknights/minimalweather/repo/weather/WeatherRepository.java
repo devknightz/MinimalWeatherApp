@@ -25,6 +25,9 @@ import android.support.annotation.Nullable;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import you.devknights.minimalweather.BuildConfig;
 import you.devknights.minimalweather.core.executor.AppExecutors;
 import you.devknights.minimalweather.database.AppDatabase;
@@ -41,30 +44,19 @@ import you.devknights.minimalweather.repo.NetworkBoundResource;
 /**
  * @author vinayagasundar
  */
-
+@Singleton
 public final class WeatherRepository {
 
-    private static WeatherRepository sInstance;
-
-    private ApiService mApiService;
-    private WeatherDAO mWeatherDAO;
+    private final ApiService mApiService;
+    private final WeatherDAO mWeatherDAO;
 
 
-    private WeatherRepository() {
-        mApiService = NetworkClient.getApiService();
-        WeatherDatabase database = AppDatabase.getInstance().getDatabase();
-        if (database != null) {
-            mWeatherDAO = database.weatherDAO();
-        }
+    @Inject
+    WeatherRepository(ApiService apiService, WeatherDAO weatherDAO) {
+        mApiService = apiService;
+        mWeatherDAO = weatherDAO;
     }
 
-    public static WeatherRepository getInstance() {
-        if (sInstance == null) {
-            sInstance = new WeatherRepository();
-        }
-
-        return sInstance;
-    }
 
     public LiveData<Resource<WeatherEntity>> getWeatherInfoAsLiveData(Location location) {
         return new NetworkBoundResource<WeatherEntity, WeatherResponse>(AppExecutors.getInstance()) {

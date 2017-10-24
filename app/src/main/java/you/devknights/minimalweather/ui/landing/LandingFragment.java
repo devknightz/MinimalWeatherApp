@@ -22,6 +22,7 @@ import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -41,8 +42,11 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
+import javax.inject.Inject;
+
 import you.devknights.minimalweather.R;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
+import you.devknights.minimalweather.di.Injectable;
 import you.devknights.minimalweather.model.Resource;
 import you.devknights.minimalweather.model.Status;
 import you.devknights.minimalweather.util.UnitConvUtil;
@@ -50,7 +54,7 @@ import you.devknights.minimalweather.util.UnitConvUtil;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LandingFragment extends Fragment {
+public class LandingFragment extends Fragment implements Injectable {
 
     private static final int PERMISSION_REQUEST_CODE = 1420;
     private static final String[] PERMISSIONS = {
@@ -75,7 +79,11 @@ public class LandingFragment extends Fragment {
     private View mDetailContainer;
 
 
-    private LandingViewModel mLandingViewModel;
+    @Inject
+    LandingViewModel mLandingViewModel;
+
+    @Inject
+    ViewModelProvider.Factory mFactory;
 
 
     public LandingFragment() {
@@ -110,7 +118,7 @@ public class LandingFragment extends Fragment {
 
         mLoadingProgressBar.setVisibility(View.VISIBLE);
 
-        mLandingViewModel = ViewModelProviders.of(this).get(LandingViewModel.class);
+        mLandingViewModel = ViewModelProviders.of(this, mFactory).get(LandingViewModel.class);
 
         if (!isPermissionGranted()) {
             requestPermissions(PERMISSIONS, PERMISSION_REQUEST_CODE);

@@ -17,6 +17,7 @@
 
 package you.devknights.minimalweather;
 
+import android.app.Activity;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
@@ -25,11 +26,17 @@ import android.support.v7.app.AppCompatDelegate;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
 import you.devknights.minimalweather.core.executor.AppExecutors;
 import you.devknights.minimalweather.database.AppDatabase;
 import you.devknights.minimalweather.database.WeatherDatabase;
 import you.devknights.minimalweather.database.dao.WeatherDAO;
 import you.devknights.minimalweather.database.entity.WeatherEntity;
+import you.devknights.minimalweather.di.AppInjector;
 
 /**
  * {@link Application} instance of the Weather App.
@@ -37,7 +44,10 @@ import you.devknights.minimalweather.database.entity.WeatherEntity;
  * @author vinayagasundar
  */
 
-public class MinimalWeatherApp extends Application {
+public class MinimalWeatherApp extends Application implements HasActivityInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
     static {
         // Initialize the day & light mode in the App
@@ -49,9 +59,12 @@ public class MinimalWeatherApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        AppDatabase.getInstance().createDb(this);
+        AppInjector.init(this);
+    }
 
-        checkForExpiredData();
+    @Override
+    public AndroidInjector<Activity> activityInjector() {
+        return dispatchingAndroidInjector;
     }
 
     private void checkForExpiredData() {

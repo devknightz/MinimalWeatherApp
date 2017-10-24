@@ -23,6 +23,8 @@ import android.arch.lifecycle.LiveData;
 import android.location.Location;
 import android.support.annotation.NonNull;
 
+import javax.inject.Inject;
+
 import you.devknights.minimalweather.database.entity.WeatherEntity;
 import you.devknights.minimalweather.model.Resource;
 import you.devknights.minimalweather.repo.weather.WeatherRepository;
@@ -35,8 +37,12 @@ public class LandingViewModel extends AndroidViewModel {
 
     private LiveData<Location> mLocation;
 
-    public LandingViewModel(@NonNull Application application) {
+    private final WeatherRepository weatherRepository;
+
+    @Inject
+    public LandingViewModel(@NonNull Application application, WeatherRepository weatherRepository) {
         super(application);
+        this.weatherRepository = weatherRepository;
     }
 
 
@@ -50,7 +56,7 @@ public class LandingViewModel extends AndroidViewModel {
 
 
     public LiveData<Resource<WeatherEntity>> getWeatherData(Location location) {
-        return WeatherRepository.getInstance().getWeatherInfoAsLiveData(location);
+        return weatherRepository.getWeatherInfoAsLiveData(location);
     }
 
 

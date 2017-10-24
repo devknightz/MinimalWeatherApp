@@ -18,7 +18,13 @@
 package you.devknights.minimalweather.ui.landing;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 import you.devknights.minimalweather.R;
 import you.devknights.minimalweather.ui.MinimalWeatherAppActivity;
 
@@ -26,7 +32,10 @@ import you.devknights.minimalweather.ui.MinimalWeatherAppActivity;
  * This will be the Landing screen of the App.
  * @author vinayagasundar
  */
-public class LandingActivity extends MinimalWeatherAppActivity {
+public class LandingActivity extends MinimalWeatherAppActivity implements HasSupportFragmentInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,5 +53,10 @@ public class LandingActivity extends MinimalWeatherAppActivity {
     @Override
     public int getLayoutResId() {
         return R.layout.activity_landing;
+    }
+
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return dispatchingAndroidInjector;
     }
 }
