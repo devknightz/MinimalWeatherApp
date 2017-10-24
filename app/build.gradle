@@ -62,10 +62,6 @@ android {
                                      "$projectDir/schemas".toString()]
             }
         }
-
-        jackOptions {
-            enabled true
-        }
     }
 
     signingConfigs {
@@ -107,36 +103,36 @@ dependencies {
 
     Map<String, String> deps = globalConf.dependenices
 
-    compile deps.appCompatLib
-    compile deps.gridLayoutLib
-    compile deps.constraintLib
-    compile deps.archExtension
-    compile deps.roomRuntime
+    implementation deps.appCompatLib
+    implementation deps.gridLayoutLib
+    implementation deps.constraintLib
+    implementation deps.archExtension
+    implementation deps.roomRuntime
 
-    compile deps.playLocation
+    implementation deps.playLocation
 
-    compile deps.retrofit2
-    compile deps.retrofit2Logger
-    compile deps.gsonConverter
+    implementation deps.retrofit2
+    implementation deps.retrofit2Logger
+    implementation deps.gsonConverter
 
     annotationProcessor deps.archCompiler
     annotationProcessor deps.roomCompiler
 
-    testCompile deps.junitLibs
-    testCompile deps.mockWebServer
-    testCompile( deps.archCoreTesting, {
+    testImplementation deps.junitLibs
+    testImplementation deps.mockWebServer
+    testImplementation( deps.archCoreTesting, {
         exclude group: 'com.android.support', module: 'support-compat'
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-core-utils'
     })
-    testCompile deps.mockitoCore
-    testCompile deps.hamcrest
+    testImplementation deps.mockitoCore
+    testImplementation deps.hamcrest
 
     androidTestCompile(deps.espressoCore, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    debugCompile deps.debugDB
+    debugImplementation deps.debugDB
 
 
 }
