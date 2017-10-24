@@ -35,6 +35,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import javax.inject.Inject;
+
 /**
  * @author vinayagasundar
  */
@@ -67,7 +69,7 @@ public class LocationLiveData extends LiveData<Location> {
         }
     };
 
-
+    @Inject
     public LocationLiveData(Context context) {
         this.mContext = context;
     }

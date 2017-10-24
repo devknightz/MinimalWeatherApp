@@ -19,6 +19,7 @@ package you.devknights.minimalweather.di;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
+import android.content.Context;
 
 import com.google.gson.Gson;
 
@@ -36,7 +37,7 @@ import you.devknights.minimalweather.network.LiveDataCallAdapterFactory;
 /**
  * @author vinayagasundar
  */
-@Module(includes = ViewModelModule.class)
+@Module(includes = {ViewModelModule.class, LiveDataModule.class})
 class AppModule {
 
     @Provides @Singleton
@@ -64,6 +65,11 @@ class AppModule {
     @Provides @Singleton
     WeatherDAO provideWeatherDao(WeatherDatabase db) {
         return db.weatherDAO();
+    }
+
+    @Provides @Singleton
+    Context provideContext(Application application) {
+        return application;
     }
 
 }

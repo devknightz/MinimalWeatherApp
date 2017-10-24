@@ -35,7 +35,7 @@ import you.devknights.minimalweather.repo.weather.WeatherRepository;
 
 public class LandingViewModel extends AndroidViewModel {
 
-    private LiveData<Location> mLocation;
+    @Inject LiveData<Location> mLocation;
 
     private final WeatherRepository weatherRepository;
 
@@ -47,10 +47,6 @@ public class LandingViewModel extends AndroidViewModel {
 
 
     public LiveData<Location> getLocation() {
-        if (mLocation == null) {
-            mLocation = new LocationLiveData(this.getApplication());
-        }
-
         return mLocation;
     }
 
