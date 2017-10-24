@@ -46,17 +46,19 @@ public final class WeatherRepository {
 
     private final ApiService mApiService;
     private final WeatherDAO mWeatherDAO;
+    private final AppExecutors mAppExecutors;
 
 
     @Inject
-    WeatherRepository(ApiService apiService, WeatherDAO weatherDAO) {
+    WeatherRepository(ApiService apiService, WeatherDAO weatherDAO, AppExecutors mAppExecutors) {
         mApiService = apiService;
         mWeatherDAO = weatherDAO;
+        this.mAppExecutors = mAppExecutors;
     }
 
 
     public LiveData<Resource<WeatherEntity>> getWeatherInfoAsLiveData(Location location) {
-        return new NetworkBoundResource<WeatherEntity, WeatherResponse>(AppExecutors.getInstance()) {
+        return new NetworkBoundResource<WeatherEntity, WeatherResponse>(mAppExecutors) {
 
             @Override
             protected void saveCallResult(@NonNull WeatherResponse item) {
