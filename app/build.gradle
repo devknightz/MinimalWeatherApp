@@ -115,6 +115,13 @@ dependencies {
     implementation deps.retrofit2Logger
     implementation deps.gsonConverter
 
+    implementation deps.daggerRuntime
+    implementation deps.daggerAndroid
+    implementation deps.daggerAndroidSupport
+
+    annotationProcessor deps.daggerCompiler
+    annotationProcessor deps.daggerAndroidCompiler
+
     annotationProcessor deps.archCompiler
     annotationProcessor deps.roomCompiler
 

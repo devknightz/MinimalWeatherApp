@@ -28,6 +28,9 @@ ext {
     retrofitLoggerVersion = "3.4.1"
     retrofitGsonConvVersion = "2.1.0"
 
+    // Dagger
+    daggerVersion = "2.11"
+
     // Test
     junitVersion = '4.12'
     espressCoreVersion = '2.2.2'
@@ -41,36 +44,44 @@ ext {
 
     dependenices = [
             // Support Libs
-            appCompatLib   : "com.android.support:appcompat-v7:$supportLibraryVersion",
-            gridLayoutLib  : "com.android.support:gridlayout-v7:$supportLibraryVersion",
-            constraintLib  : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
+            appCompatLib         : "com.android.support:appcompat-v7:$supportLibraryVersion",
+            gridLayoutLib        : "com.android.support:gridlayout-v7:$supportLibraryVersion",
+            constraintLib        : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
 
             // Arch Components
-            archExtension  : "android.arch.lifecycle:extensions:$archLifecycleVersion",
-            roomRuntime    : "android.arch.persistence.room:runtime:$archRoomVersion",
+            archExtension        : "android.arch.lifecycle:extensions:$archLifecycleVersion",
+            roomRuntime          : "android.arch.persistence.room:runtime:$archRoomVersion",
 
-            archCompiler   : "android.arch.lifecycle:compiler:$archLifecycleVersion",
-            roomCompiler   : "android.arch.persistence.room:compiler:$archRoomVersion",
+            archCompiler         : "android.arch.lifecycle:compiler:$archLifecycleVersion",
+            roomCompiler         : "android.arch.persistence.room:compiler:$archRoomVersion",
 
             // Location Tracker
-            playLocation   : "com.google.android.gms:play-services-location:$playService",
+            playLocation         : "com.google.android.gms:play-services-location:$playService",
 
             // Retrofit
-            retrofit2      : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            retrofit2Logger: "com.squareup.okhttp3:logging-interceptor:$retrofitLoggerVersion",
-            gsonConverter  : "com.squareup.retrofit2:converter-gson:$retrofitGsonConvVersion",
+            retrofit2            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofit2Logger      : "com.squareup.okhttp3:logging-interceptor:$retrofitLoggerVersion",
+            gsonConverter        : "com.squareup.retrofit2:converter-gson:$retrofitGsonConvVersion",
+
+            // Dagger
+            daggerRuntime        : "com.google.dagger:dagger:$daggerVersion",
+            daggerAndroid        : "com.google.dagger:dagger-android:$daggerVersion",
+            daggerAndroidSupport : "com.google.dagger:dagger-android-support:$daggerVersion",
+
+            daggerCompiler       : "com.google.dagger:dagger-compiler:$daggerVersion",
+            daggerAndroidCompiler: "com.google.dagger:dagger-android-processor:$daggerVersion",
 
             // Test
-            junitLibs      : "junit:junit:$junitVersion",
-            mockWebServer  : "com.squareup.okhttp3:mockwebserver:$mockWebServer",
-            archCoreTesting: "android.arch.core:core-testing:$archLifecycleVersion",
-            mockitoCore    : "org.mockito:mockito-core:$mockito",
-            hamcrest       : "org.hamcrest:hamcrest-all:$hamcrest",
+            junitLibs            : "junit:junit:$junitVersion",
+            mockWebServer        : "com.squareup.okhttp3:mockwebserver:$mockWebServer",
+            archCoreTesting      : "android.arch.core:core-testing:$archLifecycleVersion",
+            mockitoCore          : "org.mockito:mockito-core:$mockito",
+            hamcrest             : "org.hamcrest:hamcrest-all:$hamcrest",
 
-            espressoCore   : "com.android.support.test.espresso:espresso-core:$espressCoreVersion",
+            espressoCore         : "com.android.support.test.espresso:espresso-core:$espressCoreVersion",
 
             // Android Debug Database
-            debugDB        : "com.amitshekhar.android:debug-db:$debugDatabase",
+            debugDB              : "com.amitshekhar.android:debug-db:$debugDatabase",
 
     ]
 }
