@@ -50,10 +50,10 @@ public final class WeatherRepository {
 
 
     @Inject
-    WeatherRepository(ApiService apiService, WeatherDAO weatherDAO, AppExecutors mAppExecutors) {
+    WeatherRepository(ApiService apiService, WeatherDAO weatherDAO, AppExecutors appExecutors) {
         mApiService = apiService;
         mWeatherDAO = weatherDAO;
-        this.mAppExecutors = mAppExecutors;
+        mAppExecutors = appExecutors;
     }
 
 
