@@ -126,6 +126,10 @@ public class LocationLiveData extends LiveData<Location> {
             @Override
             public void onComplete(@NonNull Task<Location> task) {
                 Location location = task.getResult();
+                // Fail safe
+                if (location == null) {
+                    return;
+                }
 
                 setValue(location);
                 removeCallback();
