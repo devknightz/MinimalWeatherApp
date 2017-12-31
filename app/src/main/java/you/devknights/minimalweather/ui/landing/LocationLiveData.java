@@ -23,7 +23,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Looper;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -32,8 +31,6 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 import javax.inject.Inject;
 
@@ -122,18 +119,15 @@ public class LocationLiveData extends LiveData<Location> {
 
     private void getLastKnownLocation() {
         getFusedLocationProviderClient().getLastLocation()
-                .addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                Location location = task.getResult();
-                // Fail safe
-                if (location == null) {
-                    return;
-                }
+                .addOnCompleteListener(task -> {
+                    Location location = task.getResult();
+                    // Fail safe
+                    if (location == null) {
+                        return;
+                    }
 
-                setValue(location);
-                removeCallback();
-            }
-        });
+                    setValue(location);
+                    removeCallback();
+                });
     }
 }
