@@ -19,8 +19,6 @@ package you.devknights.minimalweather.ui.landing;
 
 
 import android.Manifest;
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
@@ -103,17 +101,17 @@ public class LandingFragment extends Fragment implements Injectable {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mCityText = (TextView) view.findViewById(R.id.cityText);
-        mTimeText = (TextView) view.findViewById(R.id.timeText);
-        mWeatherStatusImage = (ImageView) view.findViewById(R.id.weatherStatusImage);
-        mWeatherTemperatureText = (TextView) view.findViewById(R.id.weatherTemperatureText);
+        mCityText = view.findViewById(R.id.cityText);
+        mTimeText = view.findViewById(R.id.timeText);
+        mWeatherStatusImage = view.findViewById(R.id.weatherStatusImage);
+        mWeatherTemperatureText = view.findViewById(R.id.weatherTemperatureText);
 
-        mTimeReleatedText = (TextView) view.findViewById(R.id.timeRelatedMessageText);
-        mSunriseText = (TextView) view.findViewById(R.id.sunriseText);
-        mWindText = (TextView) view.findViewById(R.id.windText);
-        mTemperatureText = (TextView) view.findViewById(R.id.temperatureText);
+        mTimeReleatedText = view.findViewById(R.id.timeRelatedMessageText);
+        mSunriseText = view.findViewById(R.id.sunriseText);
+        mWindText = view.findViewById(R.id.windText);
+        mTemperatureText = view.findViewById(R.id.temperatureText);
 
-        mLoadingProgressBar = (ProgressBar) view.findViewById(R.id.loadingProgressBar);
+        mLoadingProgressBar = view.findViewById(R.id.loadingProgressBar);
         mDetailContainer = view.findViewById(R.id.detailContainer);
 
         mLoadingProgressBar.setVisibility(View.VISIBLE);
