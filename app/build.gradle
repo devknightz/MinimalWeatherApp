@@ -125,17 +125,17 @@ dependencies {
     implementation deps.daggerAndroid
     implementation deps.daggerAndroidSupport
 
-    annotationProcessor deps.daggerCompiler
-    annotationProcessor deps.daggerAndroidCompiler
-
-    annotationProcessor deps.archCompiler
-    annotationProcessor deps.roomCompiler
-
-//    kapt deps.daggerCompiler
-//    kapt deps.daggerAndroidCompiler
+//    annotationProcessor deps.daggerCompiler
+//    annotationProcessor deps.daggerAndroidCompiler
 //
-//    kapt deps.archCompiler
-//    kapt deps.roomCompiler
+//    annotationProcessor deps.archCompiler
+//    annotationProcessor deps.roomCompiler
+
+    kapt deps.daggerCompiler
+    kapt deps.daggerAndroidCompiler
+
+    kapt deps.archCompiler
+    kapt deps.roomCompiler
 
     testImplementation deps.junitLibs
     testImplementation deps.mockWebServer
