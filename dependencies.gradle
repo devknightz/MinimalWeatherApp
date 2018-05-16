@@ -39,6 +39,9 @@ ext {
     mockito_all = "1.10.19"
     hamcrest = "1.3"
 
+    // Kotlin
+    kotlinVersion = "1.2.41"
+
     // Debug Only
     debugDatabase = '1.0.0'
 
@@ -70,6 +73,11 @@ ext {
 
             daggerCompiler       : "com.google.dagger:dagger-compiler:$daggerVersion",
             daggerAndroidCompiler: "com.google.dagger:dagger-android-processor:$daggerVersion",
+
+
+            // Kotlin
+
+            kotlinStdLib         : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
 
             // Test
             junitLibs            : "junit:junit:$junitVersion",

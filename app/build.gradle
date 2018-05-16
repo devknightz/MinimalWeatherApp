@@ -16,6 +16,10 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 
 def globalConf = rootProject.ext
 
@@ -103,6 +107,8 @@ dependencies {
 
     Map<String, String> deps = globalConf.dependenices
 
+    implementation deps.kotlinStdLib
+
     implementation deps.appCompatLib
     implementation deps.gridLayoutLib
     implementation deps.constraintLib
@@ -124,6 +130,12 @@ dependencies {
 
     annotationProcessor deps.archCompiler
     annotationProcessor deps.roomCompiler
+
+//    kapt deps.daggerCompiler
+//    kapt deps.daggerAndroidCompiler
+//
+//    kapt deps.archCompiler
+//    kapt deps.roomCompiler
 
     testImplementation deps.junitLibs
     testImplementation deps.mockWebServer
