@@ -20,9 +20,10 @@ package you.devknights.minimalweather.di
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+
 
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
@@ -80,8 +81,8 @@ object AppInjector {
             activity.supportFragmentManager
                     .registerFragmentLifecycleCallbacks(
                             object : FragmentManager.FragmentLifecycleCallbacks() {
-                                override fun onFragmentCreated(fm: FragmentManager?, f: Fragment?,
-                                                               savedInstanceState: Bundle?) {
+                                override fun onFragmentCreated(fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?) {
+                                    super.onFragmentCreated(fm, f, savedInstanceState)
                                     if (f is Injectable) {
                                         AndroidSupportInjection.inject(f)
                                     }

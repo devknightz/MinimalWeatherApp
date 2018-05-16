@@ -17,8 +17,8 @@
 
 package you.devknights.minimalweather.di
 
-import android.arch.lifecycle.LiveData
 import android.location.Location
+import androidx.lifecycle.LiveData
 
 import dagger.Binds
 import dagger.Module

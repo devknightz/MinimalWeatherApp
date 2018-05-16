@@ -17,8 +17,8 @@
 
 package you.devknights.minimalweather.repo.weather
 
-import android.arch.lifecycle.LiveData
 import android.location.Location
+import androidx.lifecycle.LiveData
 
 import java.math.RoundingMode
 import java.text.DecimalFormat

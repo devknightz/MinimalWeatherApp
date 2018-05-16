@@ -19,7 +19,7 @@ package you.devknights.minimalweather
 
 import android.app.Activity
 import android.app.Application
-import android.support.v7.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate
 
 import javax.inject.Inject
 

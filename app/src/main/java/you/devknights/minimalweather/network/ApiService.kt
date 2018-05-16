@@ -17,8 +17,8 @@
 
 package you.devknights.minimalweather.network
 
-import android.arch.lifecycle.LiveData
 
+import androidx.lifecycle.LiveData
 import retrofit2.http.GET
 import retrofit2.http.Query
 import you.devknights.minimalweather.network.model.WeatherResponse

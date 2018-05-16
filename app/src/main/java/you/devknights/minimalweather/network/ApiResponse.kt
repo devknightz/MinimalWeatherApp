@@ -17,8 +17,8 @@
 
 package you.devknights.minimalweather.network
 
-import android.support.v4.util.ArrayMap
 
+import androidx.collection.ArrayMap
 import java.io.IOException
 import java.util.Collections
 import java.util.regex.Matcher

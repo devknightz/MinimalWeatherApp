@@ -19,16 +19,10 @@ package you.devknights.minimalweather.ui.landing
 
 
 import android.Manifest
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.support.annotation.DrawableRes
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.Fragment
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +30,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 
 import java.util.Calendar
 
@@ -77,31 +77,28 @@ class LandingFragment : Fragment(), Injectable {
 
 
     private val isPermissionGranted: Boolean
-        get() = ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        get() = ActivityCompat.checkSelfPermission(context as Context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context as Context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater?.inflate(R.layout.fragment_landing, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_landing, container, false)
     }
 
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mCityText = view?.findViewById(R.id.cityText)
-        mTimeText = view?.findViewById(R.id.timeText)
-        mWeatherStatusImage = view?.findViewById(R.id.weatherStatusImage)
-        mWeatherTemperatureText = view?.findViewById(R.id.weatherTemperatureText)
+        mCityText = view.findViewById(R.id.cityText)
+        mTimeText = view.findViewById(R.id.timeText)
+        mWeatherStatusImage = view.findViewById(R.id.weatherStatusImage)
+        mWeatherTemperatureText = view.findViewById(R.id.weatherTemperatureText)
 
-        mTimeReleatedText = view?.findViewById(R.id.timeRelatedMessageText)
-        mSunriseText = view?.findViewById(R.id.sunriseText)
-        mWindText = view?.findViewById(R.id.windText)
-        mTemperatureText = view?.findViewById(R.id.temperatureText)
+        mTimeReleatedText = view.findViewById(R.id.timeRelatedMessageText)
+        mSunriseText = view.findViewById(R.id.sunriseText)
+        mWindText = view.findViewById(R.id.windText)
+        mTemperatureText = view.findViewById(R.id.temperatureText)
 
-        mLoadingProgressBar = view?.findViewById(R.id.loadingProgressBar)
-        mDetailContainer = view?.findViewById(R.id.detailContainer)
+        mLoadingProgressBar = view.findViewById(R.id.loadingProgressBar)
+        mDetailContainer = view.findViewById(R.id.detailContainer)
 
         mLoadingProgressBar?.visibility = View.VISIBLE
 
@@ -114,6 +111,7 @@ class LandingFragment : Fragment(), Injectable {
             startLocationUpdates()
         }
     }
+
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
                                             grantResults: IntArray) {

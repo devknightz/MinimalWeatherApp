@@ -18,9 +18,9 @@
 package you.devknights.minimalweather.ui.landing
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
 import android.location.Location
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 
 import javax.inject.Inject
 

@@ -17,9 +17,10 @@
 
 package you.devknights.minimalweather.database
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
 
+
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import you.devknights.minimalweather.database.dao.WeatherDAO
 import you.devknights.minimalweather.database.entity.WeatherEntity
 

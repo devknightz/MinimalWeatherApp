@@ -17,11 +17,9 @@
 
 package you.devknights.minimalweather.di
 
-import android.arch.lifecycle.ViewModel
 
-import java.lang.annotation.Documented
-import java.lang.annotation.Retention
-import java.lang.annotation.RetentionPolicy
+import androidx.lifecycle.ViewModel
+
 
 import dagger.MapKey
 import kotlin.reflect.KClass

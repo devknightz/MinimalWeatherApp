@@ -18,7 +18,7 @@
 package you.devknights.minimalweather.ui.landing
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 
 import javax.inject.Inject
 

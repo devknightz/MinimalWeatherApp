@@ -21,7 +21,7 @@
     android:layout_height="match_parent"
     tools:context="you.devknights.minimalweather.ui.landing.LandingFragment">
 
-    <android.support.v7.widget.GridLayout
+    <androidx.gridlayout.widget.GridLayout
         android:id="@+id/detailContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -172,7 +172,7 @@
             app:srcCompat="@drawable/temperature"
             tools:text="8&#x2103;" />
 
-    </android.support.v7.widget.GridLayout>
+    </androidx.gridlayout.widget.GridLayout>
 
     <ProgressBar
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"

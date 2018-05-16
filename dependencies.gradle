@@ -17,7 +17,7 @@
 
 ext {
     // App dependencies
-    supportLibraryVersion = '26.1.0'
+    supportLibraryVersion = '1.0.0-alpha1'
     constraintLayoutVersion = '1.0.2'
     archLifecycleVersion = "1.0.0-rc1"
     archRoomVersion = "1.0.0-rc1"
@@ -29,7 +29,7 @@ ext {
     retrofitGsonConvVersion = "2.1.0"
 
     // Dagger
-    daggerVersion = "2.11"
+    daggerVersion = "2.14"
 
     // Test
     junitVersion = '4.12'
@@ -47,16 +47,16 @@ ext {
 
     dependenices = [
             // Support Libs
-            appCompatLib         : "com.android.support:appcompat-v7:$supportLibraryVersion",
-            gridLayoutLib        : "com.android.support:gridlayout-v7:$supportLibraryVersion",
-            constraintLib        : "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
+            appCompatLib         : "androidx.appcompat:appcompat:1.0.0-alpha1",
+            gridLayoutLib        : "androidx.gridlayout:gridlayout:1.0.0-alpha1",
+            constraintLib        : "androidx.constraintlayout:constraintlayout:1.1.0",
 
             // Arch Components
-            archExtension        : "android.arch.lifecycle:extensions:$archLifecycleVersion",
-            roomRuntime          : "android.arch.persistence.room:runtime:$archRoomVersion",
+            archExtension        : "androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1",
+            roomRuntime          : "androidx.room:room-runtime:2.0.0-alpha1",
 
-            archCompiler         : "android.arch.lifecycle:compiler:$archLifecycleVersion",
-            roomCompiler         : "android.arch.persistence.room:compiler:$archRoomVersion",
+            archCompiler         : "androidx.lifecycle:lifecycle-compiler:2.0.0-alpha1",
+            roomCompiler         : "androidx.room:room-compiler:2.0.0-alpha1",
 
             // Location Tracker
             playLocation         : "com.google.android.gms:play-services-location:$playService",

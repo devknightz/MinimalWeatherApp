@@ -27,6 +27,6 @@ import you.devknights.minimalweather.ui.landing.LandingActivity
 @Module
 abstract class LandingActivityModule {
 
-    @ContributesAndroidInjector(modules = arrayOf(FragmentBuilderModule::class))
+    @ContributesAndroidInjector(modules = [(FragmentBuilderModule::class)])
     internal abstract fun contributeLandingActivity(): LandingActivity
 }

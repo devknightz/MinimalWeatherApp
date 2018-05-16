@@ -18,8 +18,8 @@
 package you.devknights.minimalweather.di
 
 import android.app.Application
-import android.arch.persistence.room.Room
 import android.content.Context
+import androidx.room.Room
 
 import com.google.gson.Gson
 
@@ -27,6 +27,8 @@ import javax.inject.Singleton
 
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import you.devknights.minimalweather.database.WeatherDatabase
@@ -42,9 +44,10 @@ internal class AppModule {
 
     @Provides
     @Singleton
-    fun providesApiService(gson: Gson): ApiService {
+    fun providesApiService(gson: Gson, okHttpClient: OkHttpClient): ApiService {
         return Retrofit.Builder()
-                .baseUrl("http://api.openweathermap.org/data/2.5/")
+                .client(okHttpClient)
+                .baseUrl("https://api.openweathermap.org/data/2.5/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .build()
@@ -77,4 +80,11 @@ internal class AppModule {
         return application
     }
 
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+                .addInterceptor(HttpLoggingInterceptor())
+                .build()
+    }
 }
