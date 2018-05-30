@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "91d76fa81d28e40b962d2295927c207e",
+    "identityHash": "479d1d3d9d54e36b64c58d32768dca20",
     "entities": [
       {
         "tableName": "weather",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `placeId` INTEGER NOT NULL, `placeName` TEXT, `placeLat` REAL NOT NULL, `placeLon` REAL NOT NULL, `weatherId` INTEGER NOT NULL, `weatherMain` TEXT, `weatherDescription` TEXT, `weatherIcon` TEXT, `temperature` REAL NOT NULL, `pressure` REAL NOT NULL, `humidity` REAL NOT NULL, `windSpeed` REAL NOT NULL, `sunriseTime` INTEGER NOT NULL, `sunsetTime` INTEGER NOT NULL, `startTime` INTEGER NOT NULL, `endTime` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cityId` INTEGER, `weatherId` INTEGER NOT NULL, `weatherMain` TEXT, `weatherDescription` TEXT, `weatherIcon` TEXT, `temperature` REAL NOT NULL, `pressure` REAL NOT NULL, `humidity` REAL NOT NULL, `windSpeed` REAL NOT NULL, `sunriseTime` INTEGER NOT NULL, `sunsetTime` INTEGER NOT NULL, `startTime` INTEGER NOT NULL, `endTime` INTEGER NOT NULL, `id` INTEGER, `name` TEXT, `latitude` REAL, `longitude` REAL, `countryCode` TEXT)",
         "fields": [
           {
             "fieldPath": "_id",
@@ -15,28 +15,10 @@
             "notNull": true
           },
           {
-            "fieldPath": "placeId",
-            "columnName": "placeId",
+            "fieldPath": "cityId",
+            "columnName": "cityId",
             "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "placeName",
-            "columnName": "placeName",
-            "affinity": "TEXT",
             "notNull": false
-          },
-          {
-            "fieldPath": "placeLat",
-            "columnName": "placeLat",
-            "affinity": "REAL",
-            "notNull": true
-          },
-          {
-            "fieldPath": "placeLon",
-            "columnName": "placeLon",
-            "affinity": "REAL",
-            "notNull": true
           },
           {
             "fieldPath": "weatherId",
@@ -109,6 +91,36 @@
             "columnName": "endTime",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "city.id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "city.name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "city.latitude",
+            "columnName": "latitude",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "city.longitude",
+            "columnName": "longitude",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "city.countryCode",
+            "columnName": "countryCode",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -119,11 +131,55 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "city",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `countryCode` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "countryCode",
+            "columnName": "countryCode",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"91d76fa81d28e40b962d2295927c207e\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"479d1d3d9d54e36b64c58d32768dca20\")"
     ]
   }
 }

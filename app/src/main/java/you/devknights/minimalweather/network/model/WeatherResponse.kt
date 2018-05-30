@@ -19,6 +19,7 @@ package you.devknights.minimalweather.network.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import you.devknights.minimalweather.database.entity.City
 
 import you.devknights.minimalweather.database.entity.WeatherEntity
 
@@ -65,10 +66,8 @@ class WeatherResponse {
     fun buildWeather(): WeatherEntity {
         val weatherEntity = WeatherEntity()
 
-        weatherEntity.placeId = id
-        weatherEntity.placeName = name
-        weatherEntity.placeLat = coord?.lat ?: 0.toDouble()
-        weatherEntity.placeLon = coord?.lon ?: 0.toDouble()
+        weatherEntity.city = City(id.toLong(), name as String, coord?.lat
+                ?: 0.toDouble(), coord?.lon ?: 0.toDouble())
 
         weather?.let {
             if (it.isNotEmpty()) {

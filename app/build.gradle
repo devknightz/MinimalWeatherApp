@@ -131,19 +131,19 @@ dependencies {
     kapt deps.archCompiler
     kapt deps.roomCompiler
 
-//    testImplementation deps.junitLibs
-//    testImplementation deps.mockWebServer
-//    testImplementation( deps.archCoreTesting, {
-//        exclude group: 'com.android.support', module: 'support-compat'
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//        exclude group: 'com.android.support', module: 'support-core-utils'
-//    })
-//    testImplementation deps.mockitoCore
-//    testImplementation deps.hamcrest
-//
-//    androidTestCompile(deps.espressoCore, {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    })
+    testImplementation deps.junitLibs
+    testImplementation deps.mockWebServer
+    testImplementation( deps.archCoreTesting, {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
+    testImplementation deps.mockitoCore
+    testImplementation deps.hamcrest
+
+    androidTestImplementation(deps.espressoCore, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 
 //    debugImplementation deps.debugDB
 

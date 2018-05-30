@@ -27,15 +27,13 @@ import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.fragment_landing.*
 
 import java.util.Calendar
 
@@ -53,20 +51,6 @@ import you.devknights.minimalweather.util.UnitConvUtil
  * A simple [Fragment] subclass.
  */
 class LandingFragment : Fragment(), Injectable {
-
-    private var mCityText: TextView? = null
-    private var mTimeText: TextView? = null
-
-    private var mWeatherStatusImage: ImageView? = null
-    private var mWeatherTemperatureText: TextView? = null
-    private var mTimeReleatedText: TextView? = null
-
-    private var mSunriseText: TextView? = null
-    private var mWindText: TextView? = null
-    private var mTemperatureText: TextView? = null
-
-    private var mLoadingProgressBar: ProgressBar? = null
-    private var mDetailContainer: View? = null
 
     @Inject
     lateinit var mFactory: ViewModelProvider.Factory
@@ -87,20 +71,7 @@ class LandingFragment : Fragment(), Injectable {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mCityText = view.findViewById(R.id.cityText)
-        mTimeText = view.findViewById(R.id.timeText)
-        mWeatherStatusImage = view.findViewById(R.id.weatherStatusImage)
-        mWeatherTemperatureText = view.findViewById(R.id.weatherTemperatureText)
-
-        mTimeReleatedText = view.findViewById(R.id.timeRelatedMessageText)
-        mSunriseText = view.findViewById(R.id.sunriseText)
-        mWindText = view.findViewById(R.id.windText)
-        mTemperatureText = view.findViewById(R.id.temperatureText)
-
-        mLoadingProgressBar = view.findViewById(R.id.loadingProgressBar)
-        mDetailContainer = view.findViewById(R.id.detailContainer)
-
-        mLoadingProgressBar?.visibility = View.VISIBLE
+        loadingProgressBar?.visibility = View.VISIBLE
 
         mLandingViewModel = ViewModelProviders.of(this, mFactory)
                 .get(LandingViewModel::class.java)
@@ -146,29 +117,29 @@ class LandingFragment : Fragment(), Injectable {
 
 
     private fun bindData(weather: WeatherEntity) {
-        mCityText?.text = weather.placeName
-        mTimeText?.text = DateFormat.format("EEEE, hh:mm a", Calendar.getInstance()
+        cityText?.text = weather.city?.name
+        timeText?.text = DateFormat.format("EEEE, hh:mm a", Calendar.getInstance()
                 .timeInMillis)
 
         val temperatureInCelsius = getString(R.string.temp_in_celsius,
                 UnitConvUtil.kelvinToCelsius(weather.temperature))
 
-        mWeatherTemperatureText?.text = temperatureInCelsius
+        weatherTemperatureText?.text = temperatureInCelsius
 
         val timeInMills = weather.sunriseTime * 1000
 
-        mSunriseText?.text = DateFormat.format("hh.mm", timeInMills)
-        mWindText?.text = getString(R.string.wind_speed_in_miles, weather.windSpeed)
-        mTemperatureText?.text = temperatureInCelsius
+        sunriseText?.text = DateFormat.format("hh.mm", timeInMills)
+        windText?.text = getString(R.string.wind_speed_in_miles, weather.windSpeed)
+        temperatureText?.text = temperatureInCelsius
 
 
-        mWeatherStatusImage?.setImageResource(getWeatherIcon(weather.weatherIcon))
+        weatherStatusImage?.setImageResource(getWeatherIcon(weather.weatherIcon))
 
-        mDetailContainer?.alpha = 0f
-        mDetailContainer?.visibility = View.VISIBLE
-        mLoadingProgressBar?.visibility = View.GONE
+        detailContainer?.alpha = 0f
+        detailContainer?.visibility = View.VISIBLE
+        loadingProgressBar?.visibility = View.GONE
 
-        mDetailContainer?.animate()?.alpha(1f)?.setDuration(400)?.start()
+        detailContainer?.animate()?.alpha(1f)?.setDuration(400)?.start()
     }
 
 

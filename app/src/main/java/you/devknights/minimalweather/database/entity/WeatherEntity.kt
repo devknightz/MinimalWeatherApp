@@ -18,7 +18,7 @@
 package you.devknights.minimalweather.database.entity
 
 
-
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import you.devknights.minimalweather.database.WeatherDatabase
@@ -28,7 +28,10 @@ import you.devknights.minimalweather.database.WeatherDatabase
  * @since 6/6/2017.
  */
 
-@Entity(tableName = WeatherDatabase.TABLE_WEATHER)
+@Entity(tableName = WeatherDatabase.TABLE_WEATHER,
+        foreignKeys = [
+           /* (ForeignKey(entity = City::class, parentColumns = ["id"], childColumns = ["city"]))*/
+        ])
 class WeatherEntity {
 
     @PrimaryKey(autoGenerate = true)
@@ -38,10 +41,10 @@ class WeatherEntity {
     // Place information
     ///////////////////////////////////////////////////////////////////////////
 
-    var placeId: Int = 0
-    var placeName: String? = null
-    var placeLat: Double = 0.toDouble()
-    var placeLon: Double = 0.toDouble()
+
+    var cityId: Long? = null
+
+    @Embedded var city: City? = null
 
     ///////////////////////////////////////////////////////////////////////////
     // Weather Information

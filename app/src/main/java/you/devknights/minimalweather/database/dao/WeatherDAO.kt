@@ -20,10 +20,7 @@ package you.devknights.minimalweather.database.dao
 
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import you.devknights.minimalweather.database.WeatherDatabase
 import you.devknights.minimalweather.database.entity.WeatherEntity
 
@@ -42,7 +39,7 @@ interface WeatherDAO {
     fun insert(weatherEntity: WeatherEntity)
 
     @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER +
-            " WHERE placeLat = :latitude AND placeLon = :longitude" +
+            " WHERE latitude = :latitude AND longitude = :longitude" +
             " AND endTime >= :currentTimeInSecs ORDER BY endTime DESC")
     fun getWeatherByLocation(latitude: String, longitude: String, currentTimeInSecs: Long): LiveData<WeatherEntity>
 
