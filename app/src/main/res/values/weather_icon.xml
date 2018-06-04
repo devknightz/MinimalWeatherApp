@@ -26,4 +26,8 @@
     <drawable name="thunderstorm">@drawable/day_11</drawable>
     <drawable name="snow">@drawable/day_13</drawable>
     <drawable name="mist">@drawable/day_50</drawable>
+
+    <drawable name="app_icon">@mipmap/ic_launcher_white</drawable>
+
+    <drawable name="fab_add_city">@drawable/ic_add_location_black_24dp</drawable>
 </resources>

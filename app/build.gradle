@@ -112,6 +112,7 @@ dependencies {
     implementation deps.appCompatLib
     implementation deps.gridLayoutLib
     implementation deps.constraintLib
+    implementation deps.designLib
     implementation deps.archExtension
     implementation deps.roomRuntime
 

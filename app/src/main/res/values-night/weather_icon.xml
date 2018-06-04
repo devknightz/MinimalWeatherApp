@@ -25,4 +25,10 @@
     <drawable name="thunderstorm">@drawable/night_11</drawable>
     <drawable name="snow">@drawable/night_13</drawable>
     <drawable name="mist">@drawable/night_50</drawable>
+
+    <drawable name="app_icon">@mipmap/ic_launcher</drawable>
+
+    <drawable name="fab_add_city">@drawable/ic_add_location_white_24dp</drawable>
+
+
 </resources>

@@ -21,6 +21,7 @@ package you.devknights.minimalweather.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import you.devknights.minimalweather.database.dao.CityDAO
 import you.devknights.minimalweather.database.dao.WeatherDAO
 import you.devknights.minimalweather.database.entity.City
 import you.devknights.minimalweather.database.entity.WeatherEntity
@@ -33,6 +34,8 @@ import you.devknights.minimalweather.database.entity.WeatherEntity
 abstract class WeatherDatabase : RoomDatabase() {
 
     abstract fun weatherDAO(): WeatherDAO
+
+    abstract fun cityDAO(): CityDAO
 
     companion object {
 

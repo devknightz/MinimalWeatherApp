@@ -76,6 +76,8 @@ class LandingFragment : Fragment(), Injectable {
         mLandingViewModel = ViewModelProviders.of(this, mFactory)
                 .get(LandingViewModel::class.java)
 
+        mLandingViewModel.syncCityData()
+
         if (!isPermissionGranted) {
             requestPermissions(PERMISSIONS, PERMISSION_REQUEST_CODE)
         } else {

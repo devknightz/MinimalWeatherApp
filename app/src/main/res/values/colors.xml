@@ -53,4 +53,7 @@
     <color name="icon_temperature_color">@color/dashboard_icon_color</color>
     <color name="icon_wind_color">@color/dashboard_icon_color</color>
 
+
+    <color name="bottom_nav_background">@color/material_light_black</color>
+
 </resources>

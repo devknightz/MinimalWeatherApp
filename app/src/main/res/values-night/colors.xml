@@ -30,4 +30,7 @@
     <color name="progressBarBackgroundTint">@color/night_color</color>
 
     <color name="dashboard_icon_color">@color/day_color</color>
+
+    <color name="bottom_nav_background">@color/material_light_white</color>
+
 </resources>

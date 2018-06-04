@@ -26,6 +26,7 @@ import javax.inject.Inject
 
 import you.devknights.minimalweather.database.entity.WeatherEntity
 import you.devknights.minimalweather.model.Resource
+import you.devknights.minimalweather.repo.weather.CityRepository
 import you.devknights.minimalweather.repo.weather.WeatherRepository
 
 /**
@@ -33,10 +34,16 @@ import you.devknights.minimalweather.repo.weather.WeatherRepository
  */
 
 class LandingViewModel @Inject
-constructor(application: Application, private val weatherRepository: WeatherRepository) : AndroidViewModel(application) {
+constructor(application: Application, private val weatherRepository: WeatherRepository,
+            private val cityRepository: CityRepository) : AndroidViewModel(application) {
 
     @Inject
     lateinit var location: LiveData<Location>
+
+
+    fun syncCityData() {
+        cityRepository.syncCityData()
+    }
 
 
     fun getWeatherData(location: Location): LiveData<Resource<WeatherEntity>> {

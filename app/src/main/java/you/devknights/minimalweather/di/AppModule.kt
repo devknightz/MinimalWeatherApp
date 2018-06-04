@@ -19,6 +19,7 @@ package you.devknights.minimalweather.di
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
 
 import com.google.gson.Gson
@@ -32,6 +33,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import you.devknights.minimalweather.database.WeatherDatabase
+import you.devknights.minimalweather.database.dao.CityDAO
 import you.devknights.minimalweather.database.dao.WeatherDAO
 import you.devknights.minimalweather.network.ApiService
 import you.devknights.minimalweather.network.LiveDataCallAdapterFactory
@@ -76,6 +78,10 @@ internal class AppModule {
 
     @Provides
     @Singleton
+    fun provideCityDao(db: WeatherDatabase): CityDAO = db.cityDAO()
+
+    @Provides
+    @Singleton
     fun provideContext(application: Application): Context {
         return application
     }
@@ -86,5 +92,12 @@ internal class AppModule {
         return OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor())
                 .build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideSharedPreference(context: Context): SharedPreferences {
+        return context.getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE)
     }
 }

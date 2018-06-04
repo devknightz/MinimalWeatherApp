@@ -21,6 +21,7 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.bottomappbar.BottomAppBar
 
 
 import you.devknights.minimalweather.R
@@ -33,6 +34,8 @@ abstract class MinimalWeatherAppActivity : AppCompatActivity() {
 
 
     private var mToolbar: Toolbar? = null
+
+    private var bottomAppBar: BottomAppBar? = null
 
 
     /**
@@ -47,6 +50,7 @@ abstract class MinimalWeatherAppActivity : AppCompatActivity() {
         setContentView(layoutResId)
 
         mToolbar = findViewById(R.id.toolbar)
+        bottomAppBar = findViewById(R.id.bottom_bar)
         mToolbar?.title = null
     }
 }
