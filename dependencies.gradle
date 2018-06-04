@@ -58,7 +58,7 @@ ext {
             archCompiler         : "androidx.lifecycle:lifecycle-compiler:2.0.0-alpha1",
             roomCompiler         : "androidx.room:room-compiler:2.0.0-alpha1",
 
-            workmanager          : "android.arch.work:work-runtime:1.0.0-alpha01",
+            workmanager          : "android.arch.work:work-runtime:1.0.0-alpha02",
 
             // Location Tracker
             playLocation         : "com.google.android.gms:play-services-location:$playService",
