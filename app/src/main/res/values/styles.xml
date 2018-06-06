@@ -26,9 +26,38 @@
     </style>
 
 
-    <style name="AppTheme.Landing"  parent="AppTheme">
+    <style name="AppTheme.Landing" parent="AppTheme">
         <item name="android:windowBackground">@color/windowBackgroundColor</item>
     </style>
+
+
+    <style name="AppTheme.TextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="AppTheme.SwitchStyle" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="colorControlNormal">@color/colorPrimaryInvert</item>
+        <item name="colorControlActivated">@color/colorPrimaryInvert</item>
+    </style>
+
+    <style name="AppTheme.Landing.BottomBar.Text" parent="AppTheme.TextStyle">
+        <!--<item name="android:textColor">@color/primaryInvertTextColor</item>-->
+    </style>
+
+    <style name="AppTheme.Landing.BottomBar.Title" parent="AppTheme.Landing.BottomBar.Text">
+        <item name="android:textSize">@dimen/app_text_size_large</item>
+    </style>
+
+    <style name="AppTheme.Landing.BottomBar.SwitchStyle" parent="AppTheme.SwitchStyle">
+        <!--<item name="android:textColor">@color/primaryInvertTextColor</item>-->
+    </style>
+
+    <style name="AppTheme.Landing.BottomBar.SwitchStyleTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorControlNormal">@color/colorPrimaryInvert</item>
+        <item name="colorControlActivated">@color/colorPrimaryInvert</item>
+    </style>
+
 
     <style name="AppTheme.Landing.CityTextStyle" parent="@style/TextAppearance.AppCompat.Large">
         <item name="android:textAllCaps">true</item>
@@ -42,8 +71,7 @@
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
 
-    <style name="AppTheme.Landing.TemperatureTextStyle"
-        parent="@style/TextAppearance.AppCompat.Display1">
+    <style name="AppTheme.Landing.TemperatureTextStyle" parent="@style/TextAppearance.AppCompat.Display1">
         <item name="android:textAllCaps">true</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textColor">@color/weatherTemperatureTextColor</item>
@@ -74,8 +102,8 @@
     </style>
 
     <style name="AppTheme.Landing.ProgressBar" parent="Theme.AppCompat.Light">
-            <item name="colorAccent">@color/progressBarColor</item>
-            <item name="android:progressBackgroundTint">@color/progressBarBackgroundTint</item>
+        <item name="colorAccent">@color/progressBarColor</item>
+        <item name="android:progressBackgroundTint">@color/progressBarBackgroundTint</item>
     </style>
 
 </resources>

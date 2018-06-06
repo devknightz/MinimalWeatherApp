@@ -37,7 +37,15 @@
     <color name="colorPrimaryDark">@color/dayColorPrimaryDark</color>
     <color name="colorAccent">@color/dayColorAccent</color>
 
+    <color name="colorPrimaryInvert">@color/nightColorPrimary</color>
+    <color name="colorPrimaryDarkInvert">@color/nightColorPrimaryDark</color>
+    <color name="colorAccentInvert">@color/nightColorAccent</color>
+
     <color name="windowBackgroundColor">@color/day_color</color>
+
+
+    <color name="primaryTextColor">@color/dayPrimaryTextColor</color>
+    <color name="primaryInvertTextColor">@color/nightPrimaryTextColor</color>
 
     <color name="landingCityTextColor">@color/dayPrimaryTextColor</color>
     <color name="weatherTemperatureTextColor">@color/dayPrimaryTextColor</color>
@@ -46,6 +54,8 @@
     <color name="progressBarBackgroundTint">@color/day_color</color>
 
     <color name="landingDividerBackgroundColor">@android:color/holo_blue_bright</color>
+
+    <color name="default_icon_color">@color/night_color</color>
 
     <color name="dashboard_icon_color">@color/night_color</color>
 

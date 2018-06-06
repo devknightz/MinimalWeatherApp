@@ -29,6 +29,7 @@
     <drawable name="app_icon">@mipmap/ic_launcher</drawable>
 
     <drawable name="fab_add_city">@drawable/ic_add_location_white_24dp</drawable>
+    <drawable name="bottom_nav_more">@drawable/ic_more_vert_black_24dp</drawable>
 
 
 </resources>

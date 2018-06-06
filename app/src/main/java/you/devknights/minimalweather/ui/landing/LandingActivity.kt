@@ -18,6 +18,8 @@
 package you.devknights.minimalweather.ui.landing
 
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 
 import javax.inject.Inject
@@ -25,8 +27,12 @@ import javax.inject.Inject
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
+import kotlinx.android.synthetic.main.activity_landing.*
 import you.devknights.minimalweather.R
 import you.devknights.minimalweather.ui.MinimalWeatherAppActivity
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import you.devknights.minimalweather.util.ThemeUtil
+
 
 /**
  * This will be the Landing screen of the App.
@@ -41,6 +47,8 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
     override val layoutResId: Int
         get() = R.layout.activity_landing
 
+    var isTouchByUser = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,9 +58,50 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
                     .replace(R.id.frame_container, LandingFragment())
                     .commit()
         }
+
+        setUpBottomDrawer(parent_container as View)
+
+        switch_auto_night_mode.setOnTouchListener { _, _ ->
+            isTouchByUser = true
+            false
+        }
+
+        switch_auto_night_mode.setOnCheckedChangeListener { _, isChecked ->
+
+           if (isTouchByUser) {
+               isTouchByUser = false
+               if (isChecked) {
+                   ThemeUtil.setAutoNightMode(isChecked)
+               } else {
+                   ThemeUtil.setAutoNightMode(false, AppCompatDelegate.MODE_NIGHT_YES)
+               }
+
+               recreate()
+           }
+        }
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment>? {
         return dispatchingAndroidInjector
+    }
+
+    private fun setUpBottomDrawer(view: View) {
+        val bottomDrawer: View = view.findViewById(R.id.bottom_drawer)
+        val bottomDrawerBehavior = BottomSheetBehavior.from<View>(bottomDrawer)
+        bottomDrawerBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+
+
+        bottom_bar.setOnMenuItemClickListener {
+            it?.let {
+                if (it.itemId == R.id.more_info) {
+                    bottomDrawerBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+                    return@setOnMenuItemClickListener true
+                }
+            }
+
+            false
+        }
+
+        bottom_bar.replaceMenu(R.menu.bottom_bar_menu)
     }
 }

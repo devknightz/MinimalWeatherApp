@@ -32,4 +32,6 @@
     <string name="temp_in_celsius">%.2f\u00B0 C</string>
     <string name="wind_speed_in_miles">%.2f m/s</string>
     <string name="nav_add_city">Add City</string>
+    <string name="bottom_nav_more">More</string>
+    <string name="label_auto_night_mode">Auto Night Mode</string>
 </resources>
