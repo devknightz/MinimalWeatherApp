@@ -26,6 +26,7 @@ import javax.inject.Inject
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import you.devknights.minimalweather.database.KeyValueStore
 import you.devknights.minimalweather.di.AppInjector
 
 /**
@@ -39,22 +40,20 @@ class MinimalWeatherApp : Application(), HasActivityInjector {
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
+    @Inject
+    lateinit var keyValueStore: KeyValueStore
+
     override fun onCreate() {
         super.onCreate()
 
         AppInjector.init(this)
+
+        AppCompatDelegate.setDefaultNightMode(keyValueStore.getAutoNightMode())
     }
 
     override fun activityInjector(): AndroidInjector<Activity>? {
         return dispatchingAndroidInjector
     }
 
-    companion object {
 
-        init {
-            // Initialize the day & light mode in the App
-            AppCompatDelegate.setDefaultNightMode(
-                    AppCompatDelegate.MODE_NIGHT_AUTO)
-        }
-    }
 }

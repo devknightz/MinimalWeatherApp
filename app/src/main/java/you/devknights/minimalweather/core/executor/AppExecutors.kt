@@ -54,6 +54,20 @@ open class AppExecutors(private val diskIO: Executor, private val networkIO: Exe
         return mainThread
     }
 
+
+    fun runOnNetwork(task: () -> Unit) {
+        networkIO.execute { task() }
+    }
+
+
+    fun runOnMain(task: () -> Unit) {
+        mainThread.execute { task() }
+    }
+
+    fun runOnDisk(task: () -> Unit) {
+        diskIO.execute { task() }
+    }
+
     private class MainThreadExecutor : Executor {
         private val mainThreadHandler = Handler(Looper.getMainLooper())
         override fun execute(command: Runnable) {

@@ -19,20 +19,20 @@ package you.devknights.minimalweather.ui.landing
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
-
-import javax.inject.Inject
-
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_landing.*
 import you.devknights.minimalweather.R
 import you.devknights.minimalweather.ui.MinimalWeatherAppActivity
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import you.devknights.minimalweather.ui.weather.WeatherFragment
 import you.devknights.minimalweather.util.ThemeUtil
+import javax.inject.Inject
 
 
 /**
@@ -45,14 +45,21 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private lateinit var landingViewModel: LandingViewModel
+
+
     override val layoutResId: Int
         get() = R.layout.activity_landing
 
-    var isTouchByUser = false
+    private var isTouchByUser = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        landingViewModel = ViewModelProviders.of(this, viewModelFactory)[LandingViewModel::class.java]
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -62,6 +69,12 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
 
         setUpBottomDrawer(parent_container as View)
 
+        landingViewModel.isAutoNightModeEnabled().observe(this, Observer {
+            it?.let {
+                switch_auto_night_mode.isChecked = it
+            }
+        })
+
         switch_auto_night_mode.setOnTouchListener { _, _ ->
             isTouchByUser = true
             false
@@ -69,16 +82,16 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
 
         switch_auto_night_mode.setOnCheckedChangeListener { _, isChecked ->
 
-           if (isTouchByUser) {
-               isTouchByUser = false
-               if (isChecked) {
-                   ThemeUtil.setAutoNightMode(isChecked)
-               } else {
-                   ThemeUtil.setAutoNightMode(false, AppCompatDelegate.MODE_NIGHT_YES)
-               }
+            if (isTouchByUser) {
+                isTouchByUser = false
 
-               recreate()
-           }
+                landingViewModel.changeAutoNightMode(isChecked).observeForever {
+                    it?.let {
+                        ThemeUtil.setAutoNightMode(it)
+                        recreate()
+                    }
+                }
+            }
         }
     }
 
