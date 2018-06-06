@@ -19,7 +19,7 @@ package you.devknights.minimalweather.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import you.devknights.minimalweather.ui.landing.LandingFragment
+import you.devknights.minimalweather.ui.weather.WeatherFragment
 
 /**
  * @author vinayagasundar
@@ -28,5 +28,5 @@ import you.devknights.minimalweather.ui.landing.LandingFragment
 abstract class FragmentBuilderModule {
 
     @ContributesAndroidInjector
-    internal abstract fun contributeLandingFragment(): LandingFragment
+    internal abstract fun contributeLandingFragment(): WeatherFragment
 }

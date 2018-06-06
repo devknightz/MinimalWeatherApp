@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package you.devknights.minimalweather.ui.landing
+package you.devknights.minimalweather.ui.weather
 
 import android.app.Application
 import android.location.Location
@@ -33,7 +33,7 @@ import you.devknights.minimalweather.repo.weather.WeatherRepository
  * @author vinayagasundar
  */
 
-class LandingViewModel @Inject
+class WeatherViewModel @Inject
 constructor(application: Application, private val weatherRepository: WeatherRepository,
             private val cityRepository: CityRepository) : AndroidViewModel(application) {
 

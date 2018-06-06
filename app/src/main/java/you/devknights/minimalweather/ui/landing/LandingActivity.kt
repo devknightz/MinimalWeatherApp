@@ -31,6 +31,7 @@ import kotlinx.android.synthetic.main.activity_landing.*
 import you.devknights.minimalweather.R
 import you.devknights.minimalweather.ui.MinimalWeatherAppActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import you.devknights.minimalweather.ui.weather.WeatherFragment
 import you.devknights.minimalweather.util.ThemeUtil
 
 
@@ -55,7 +56,7 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, LandingFragment())
+                    .replace(R.id.frame_container, WeatherFragment())
                     .commit()
         }
 
