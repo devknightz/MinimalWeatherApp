@@ -50,7 +50,7 @@ task clean(type: Delete) {
 ext {
     // Sdk and tools
     appMinSdkVersion = 21
-    appTargetSdkVersion = 'P'
+    appTargetSdkVersion = 28
     appCompileSdkVersion = 'android-P'
     buildToolsVersion = '26.0.2'
 }
