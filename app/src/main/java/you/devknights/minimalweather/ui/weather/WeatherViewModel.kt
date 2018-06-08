@@ -17,25 +17,22 @@
 
 package you.devknights.minimalweather.ui.weather
 
-import android.app.Application
 import android.location.Location
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-
-import javax.inject.Inject
-
+import androidx.lifecycle.ViewModel
 import you.devknights.minimalweather.database.entity.WeatherEntity
 import you.devknights.minimalweather.model.Resource
 import you.devknights.minimalweather.repo.weather.CityRepository
 import you.devknights.minimalweather.repo.weather.WeatherRepository
+import javax.inject.Inject
 
 /**
  * @author vinayagasundar
  */
 
 class WeatherViewModel @Inject
-constructor(application: Application, private val weatherRepository: WeatherRepository,
-            private val cityRepository: CityRepository) : AndroidViewModel(application) {
+constructor(private val weatherRepository: WeatherRepository,
+            private val cityRepository: CityRepository) : ViewModel() {
 
     @Inject
     lateinit var location: LiveData<Location>

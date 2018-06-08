@@ -19,7 +19,6 @@ package you.devknights.minimalweather.ui.weather
 
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -28,7 +27,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -45,6 +43,7 @@ import you.devknights.minimalweather.di.Injectable
 import you.devknights.minimalweather.model.Resource
 import you.devknights.minimalweather.model.Status
 import you.devknights.minimalweather.util.UnitConvUtil
+import you.devknights.minimalweather.util.ext.isPermissionGranted
 
 
 /**
@@ -55,13 +54,7 @@ class WeatherFragment : Fragment(), Injectable {
     @Inject
     lateinit var mFactory: ViewModelProvider.Factory
 
-    @Inject
     lateinit var mWeatherViewModel: WeatherViewModel
-
-
-
-    private val isPermissionGranted: Boolean
-        get() = ActivityCompat.checkSelfPermission(context as Context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context as Context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -78,7 +71,8 @@ class WeatherFragment : Fragment(), Injectable {
 
         mWeatherViewModel.syncCityData()
 
-        if (!isPermissionGranted) {
+
+        if (!isPermissionGranted(PERMISSIONS)) {
             requestPermissions(PERMISSIONS, PERMISSION_REQUEST_CODE)
         } else {
             startLocationUpdates()
