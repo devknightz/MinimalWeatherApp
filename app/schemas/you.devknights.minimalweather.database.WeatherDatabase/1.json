@@ -2,23 +2,17 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "479d1d3d9d54e36b64c58d32768dca20",
+    "identityHash": "bafbbcb7af5801951a5d7fe526683019",
     "entities": [
       {
         "tableName": "weather",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cityId` INTEGER, `weatherId` INTEGER NOT NULL, `weatherMain` TEXT, `weatherDescription` TEXT, `weatherIcon` TEXT, `temperature` REAL NOT NULL, `pressure` REAL NOT NULL, `humidity` REAL NOT NULL, `windSpeed` REAL NOT NULL, `sunriseTime` INTEGER NOT NULL, `sunsetTime` INTEGER NOT NULL, `startTime` INTEGER NOT NULL, `endTime` INTEGER NOT NULL, `id` INTEGER, `name` TEXT, `latitude` REAL, `longitude` REAL, `countryCode` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `weatherId` INTEGER NOT NULL, `weatherMain` TEXT, `weatherDescription` TEXT, `weatherIcon` TEXT, `temperature` REAL NOT NULL, `pressure` REAL NOT NULL, `humidity` REAL NOT NULL, `windSpeed` REAL NOT NULL, `sunriseTime` INTEGER NOT NULL, `sunsetTime` INTEGER NOT NULL, `startTime` INTEGER NOT NULL, `endTime` INTEGER NOT NULL, `id` INTEGER, `name` TEXT, `latitude` REAL, `longitude` REAL, `countryCode` TEXT)",
         "fields": [
           {
             "fieldPath": "_id",
             "columnName": "_id",
             "affinity": "INTEGER",
             "notNull": true
-          },
-          {
-            "fieldPath": "cityId",
-            "columnName": "cityId",
-            "affinity": "INTEGER",
-            "notNull": false
           },
           {
             "fieldPath": "weatherId",
@@ -179,7 +173,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"479d1d3d9d54e36b64c58d32768dca20\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"bafbbcb7af5801951a5d7fe526683019\")"
     ]
   }
 }

@@ -20,6 +20,7 @@ package you.devknights.minimalweather.database.entity
 
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import you.devknights.minimalweather.database.WeatherDatabase
 
@@ -28,50 +29,45 @@ import you.devknights.minimalweather.database.WeatherDatabase
  * @since 6/6/2017.
  */
 
-@Entity(tableName = WeatherDatabase.TABLE_WEATHER,
-        foreignKeys = [
-           /* (ForeignKey(entity = City::class, parentColumns = ["id"], childColumns = ["city"]))*/
-        ])
-class Weather {
+@Entity(tableName = WeatherDatabase.TABLE_WEATHER)
+data class Weather(
 
-    @PrimaryKey(autoGenerate = true)
-    var _id: Long = 0
+        @PrimaryKey(autoGenerate = true)
+        var _id: Long = 0,
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Place information
-    ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////
+        // Place information
+        ///////////////////////////////////////////////////////////////////////////
 
 
-    var cityId: Long? = null
+        @Embedded var city: City? = null,
 
-    @Embedded var city: City? = null
+        ///////////////////////////////////////////////////////////////////////////
+        // Weather Information
+        ///////////////////////////////////////////////////////////////////////////
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Weather Information
-    ///////////////////////////////////////////////////////////////////////////
-
-    var weatherId: Int = 0
-    var weatherMain: String? = null
-    var weatherDescription: String? = null
-    var weatherIcon: String? = null
+        var weatherId: Int = 0,
+        var weatherMain: String? = null,
+        var weatherDescription: String? = null,
+        var weatherIcon: String? = null,
 
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Temperature, wind , pressure information
-    ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////
+        // Temperature, wind , pressure information
+        ///////////////////////////////////////////////////////////////////////////
 
-    var temperature: Float = 0.toFloat()
-    var pressure: Float = 0.toFloat()
-    var humidity: Float = 0.toFloat()
-    var windSpeed: Float = 0.toFloat()
+        var temperature: Float = 0.toFloat(),
+        var pressure: Float = 0.toFloat(),
+        var humidity: Float = 0.toFloat(),
+        var windSpeed: Float = 0.toFloat(),
 
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Sunrise and sunset timing information
-    ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////
+        // Sunrise and sunset timing information
+        ///////////////////////////////////////////////////////////////////////////
 
-    var sunriseTime: Long = 0
-    var sunsetTime: Long = 0
-    var startTime: Long = 0
-    var endTime: Long = 0
-}
+        var sunriseTime: Long = 0,
+        var sunsetTime: Long = 0,
+        var startTime: Long = 0,
+        var endTime: Long = 0
+)
