@@ -20,7 +20,7 @@ package you.devknights.minimalweather.ui.weather
 import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import you.devknights.minimalweather.database.entity.WeatherEntity
+import you.devknights.minimalweather.database.entity.Weather
 import you.devknights.minimalweather.model.Resource
 import you.devknights.minimalweather.repo.weather.CityRepository
 import you.devknights.minimalweather.repo.weather.WeatherRepository
@@ -43,7 +43,7 @@ constructor(private val weatherRepository: WeatherRepository,
     }
 
 
-    fun getWeatherData(location: Location): LiveData<Resource<WeatherEntity>> {
+    fun getWeatherData(location: Location): LiveData<Resource<Weather>> {
         return weatherRepository.getWeatherInfoAsLiveData(location)
     }
 

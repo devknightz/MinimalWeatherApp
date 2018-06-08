@@ -38,7 +38,7 @@ import java.util.Calendar
 import javax.inject.Inject
 
 import you.devknights.minimalweather.R
-import you.devknights.minimalweather.database.entity.WeatherEntity
+import you.devknights.minimalweather.database.entity.Weather
 import you.devknights.minimalweather.di.Injectable
 import you.devknights.minimalweather.model.Resource
 import you.devknights.minimalweather.model.Status
@@ -102,7 +102,7 @@ class WeatherFragment : Fragment(), Injectable {
                 .getWeatherData(location)
 
 
-        resourceLiveData.observe(this, Observer<Resource<WeatherEntity>> { weatherEntityResource ->
+        resourceLiveData.observe(this, Observer<Resource<Weather>> { weatherEntityResource ->
             if (weatherEntityResource != null && weatherEntityResource.status == Status.SUCCESS) {
                 weatherEntityResource.data?.let {
                     bindData(it)
@@ -112,7 +112,7 @@ class WeatherFragment : Fragment(), Injectable {
     }
 
 
-    private fun bindData(weather: WeatherEntity) {
+    private fun bindData(weather: Weather) {
         cityText?.text = weather.city?.name
         timeText?.text = DateFormat.format("EEEE, hh:mm a", Calendar.getInstance()
                 .timeInMillis)

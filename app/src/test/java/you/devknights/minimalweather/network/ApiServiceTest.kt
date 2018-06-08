@@ -24,22 +24,16 @@ import org.junit.Rule
 import org.junit.Test
 
 import java.io.IOException
-import java.io.InputStream
 import java.nio.charset.StandardCharsets
-import java.util.Collections
 import java.util.Locale
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import okhttp3.mockwebserver.RecordedRequest
-import okio.BufferedSource
 import okio.Okio
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import you.devknights.minimalweather.BuildConfig
-import you.devknights.minimalweather.database.entity.WeatherEntity
-import you.devknights.minimalweather.network.model.WeatherResponse
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.Is.`is`

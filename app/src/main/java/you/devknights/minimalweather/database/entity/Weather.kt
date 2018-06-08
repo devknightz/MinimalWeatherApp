@@ -32,7 +32,7 @@ import you.devknights.minimalweather.database.WeatherDatabase
         foreignKeys = [
            /* (ForeignKey(entity = City::class, parentColumns = ["id"], childColumns = ["city"]))*/
         ])
-class WeatherEntity {
+class Weather {
 
     @PrimaryKey(autoGenerate = true)
     var _id: Long = 0

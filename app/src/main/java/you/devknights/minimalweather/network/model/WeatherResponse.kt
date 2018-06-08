@@ -21,7 +21,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import you.devknights.minimalweather.database.entity.City
 
-import you.devknights.minimalweather.database.entity.WeatherEntity
+import you.devknights.minimalweather.database.entity.Weather
 
 class WeatherResponse {
 
@@ -30,7 +30,7 @@ class WeatherResponse {
     private var coord: Coord? = null
     @SerializedName("weather")
     @Expose
-    private var weather: List<Weather>? = null
+    private var weather: List<you.devknights.minimalweather.network.model.Weather>? = null
     @SerializedName("base")
     @Expose
     private var base: String? = null
@@ -63,8 +63,8 @@ class WeatherResponse {
     private var cod: Int = 0
 
 
-    fun buildWeather(): WeatherEntity {
-        val weatherEntity = WeatherEntity()
+    fun buildWeather(): Weather {
+        val weatherEntity = Weather()
 
         weatherEntity.city = City(id.toLong(), name as String, coord?.lat
                 ?: 0.toDouble(), coord?.lon ?: 0.toDouble())

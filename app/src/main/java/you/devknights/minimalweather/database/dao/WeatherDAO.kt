@@ -22,10 +22,10 @@ package you.devknights.minimalweather.database.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import you.devknights.minimalweather.database.WeatherDatabase
-import you.devknights.minimalweather.database.entity.WeatherEntity
+import you.devknights.minimalweather.database.entity.Weather
 
 /**
- * A DAO interface for [WeatherEntity] model
+ * A DAO interface for [Weather] model
  * @author vinayagasundar
  */
 
@@ -33,20 +33,20 @@ import you.devknights.minimalweather.database.entity.WeatherEntity
 interface WeatherDAO {
 
     @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER)
-    fun all(): List<WeatherEntity>
+    fun all(): List<Weather>
 
     @Insert
-    fun insert(weatherEntity: WeatherEntity)
+    fun insert(weather: Weather)
 
     @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER +
             " WHERE latitude = :latitude AND longitude = :longitude" +
             " AND endTime >= :currentTimeInSecs ORDER BY endTime DESC")
-    fun getWeatherByLocation(latitude: String, longitude: String, currentTimeInSecs: Long): LiveData<WeatherEntity>
+    fun getWeatherByLocation(latitude: String, longitude: String, currentTimeInSecs: Long): LiveData<Weather>
 
     @Query("SELECT * FROM " + WeatherDatabase.TABLE_WEATHER
             + " WHERE endTime <= :currentTimeInMills")
-    fun getAllExpiredData(currentTimeInMills: Long): List<WeatherEntity>
+    fun getAllExpiredData(currentTimeInMills: Long): List<Weather>
 
     @Delete
-    fun deleteWeatherData(weatherEntities: List<WeatherEntity>)
+    fun deleteWeatherData(weathers: List<Weather>)
 }

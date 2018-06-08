@@ -29,7 +29,7 @@ import javax.inject.Singleton
 import you.devknights.minimalweather.BuildConfig
 import you.devknights.minimalweather.core.executor.AppExecutors
 import you.devknights.minimalweather.database.dao.WeatherDAO
-import you.devknights.minimalweather.database.entity.WeatherEntity
+import you.devknights.minimalweather.database.entity.Weather
 import you.devknights.minimalweather.model.Resource
 import you.devknights.minimalweather.network.ApiResponse
 import you.devknights.minimalweather.network.ApiService
@@ -44,8 +44,8 @@ class WeatherRepository @Inject
 internal constructor(private val mApiService: ApiService, private val mWeatherDAO: WeatherDAO, private val mAppExecutors: AppExecutors) {
 
 
-    fun getWeatherInfoAsLiveData(location: Location): LiveData<Resource<WeatherEntity>> {
-        return object : NetworkBoundResource<WeatherEntity, WeatherResponse>(mAppExecutors) {
+    fun getWeatherInfoAsLiveData(location: Location): LiveData<Resource<Weather>> {
+        return object : NetworkBoundResource<Weather, WeatherResponse>(mAppExecutors) {
 
             override fun saveCallResult(item: WeatherResponse) {
                 val weatherEntity = item.buildWeather()
@@ -55,11 +55,11 @@ internal constructor(private val mApiService: ApiService, private val mWeatherDA
                 mWeatherDAO.insert(weatherEntity)
             }
 
-            override fun shouldFetch(data: WeatherEntity?): Boolean {
+            override fun shouldFetch(data: Weather?): Boolean {
                 return data == null
             }
 
-            override fun loadFromDb(): LiveData<WeatherEntity> {
+            override fun loadFromDb(): LiveData<Weather> {
                 val decimalFormat = DecimalFormat("#.##")
                 decimalFormat.roundingMode = RoundingMode.HALF_UP
 
