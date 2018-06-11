@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import you.devknights.minimalweather.ui.city.CityViewModel
 import you.devknights.minimalweather.ui.landing.LandingViewModel
 import you.devknights.minimalweather.ui.weather.WeatherViewModel
 import you.devknights.minimalweather.viewmodel.MinimalViewModelFactory
@@ -42,6 +43,12 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(WeatherViewModel::class)
     abstract fun bindWeatherViewModel(weatherViewModel: WeatherViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CityViewModel::class)
+    abstract fun bindCityViewModel(cityViewModel: CityViewModel): ViewModel
+
 
 
     @Binds

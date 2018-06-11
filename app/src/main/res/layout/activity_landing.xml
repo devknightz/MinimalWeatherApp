@@ -39,14 +39,16 @@
         app:backgroundTint="@color/bottom_nav_background"
         app:fabAlignmentMode="center"
         app:fabAttached="true"
-        app:navigationIcon="@drawable/icon_bitmap" />
+        app:navigationIcon="@drawable/icon_bitmap"
+        tools:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_add_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/fab_add_city"
-        app:layout_anchor="@id/bottom_bar" />
+        app:layout_anchor="@id/bottom_bar"
+        tools:visibility="gone" />
 
     <FrameLayout
         android:id="@+id/bottom_drawer"
@@ -55,7 +57,8 @@
         android:elevation="16dp"
         android:fitsSystemWindows="true"
         app:behavior_hideable="true"
-        app:layout_behavior="@string/bottom_sheet_behavior">
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        tools:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,38 +79,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/listPreferredItemHeightSmall"
                 android:drawableStart="@drawable/ic_auto_night_mode"
-                android:theme="@style/AppTheme.Landing.BottomBar.SwitchStyleTheme"
                 android:drawablePadding="16dp"
-                android:text="@string/label_auto_night_mode" />
+                android:text="@string/label_auto_night_mode"
+                android:theme="@style/AppTheme.Landing.BottomBar.SwitchStyleTheme" />
 
 
             <TextView
                 style="@style/AppTheme.Landing.BottomBar.Text"
                 android:layout_width="match_parent"
-                android:gravity="center_vertical"
                 android:layout_height="?attr/listPreferredItemHeightSmall"
                 android:drawableStart="@drawable/ic_auto_night_mode"
                 android:drawablePadding="16dp"
-                android:text="About Us" />
+                android:gravity="center_vertical"
+                android:text="About Us"
+                tools:ignore="HardcodedText" />
 
 
             <TextView
                 style="@style/AppTheme.Landing.BottomBar.Text"
                 android:layout_width="match_parent"
-                android:gravity="center_vertical"
                 android:layout_height="?attr/listPreferredItemHeightSmall"
                 android:drawableStart="@drawable/ic_auto_night_mode"
                 android:drawablePadding="16dp"
-                android:text="Settings" />
+                android:gravity="center_vertical"
+                android:text="Settings"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
     </FrameLayout>
+
+    <!--TODO FrameLayout(frame_container) will changed into a ViewPager-->
 
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:paddingBottom="16dp" />
+        android:layout_marginBottom="?attr/actionBarSize" />
+
+    <FrameLayout
+        android:id="@+id/child_frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

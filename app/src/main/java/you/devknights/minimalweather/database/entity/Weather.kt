@@ -33,7 +33,7 @@ import you.devknights.minimalweather.database.WeatherDatabase
 data class Weather(
 
         @PrimaryKey(autoGenerate = true)
-        var _id: Long = 0,
+        var id: Long = 0,
 
         ///////////////////////////////////////////////////////////////////////////
         // Place information

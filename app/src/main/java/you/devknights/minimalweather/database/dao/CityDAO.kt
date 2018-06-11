@@ -1,5 +1,6 @@
 package you.devknights.minimalweather.database.dao
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
@@ -18,4 +19,11 @@ interface CityDAO {
 
     @Query("select * from city")
     fun getAll(): LiveData<List<City>>
+
+
+    @Query("SELECT * FROM city WHERE _id = :cityId")
+    fun getCityById(cityId: Long): City
+
+    @Query("SELECT * FROM city WHERE name like '%' || :cityName || '%'  COLLATE NOCASE")
+    fun searchByCityName(cityName: String): Cursor
 }
