@@ -22,20 +22,24 @@ package you.devknights.minimalweather.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import you.devknights.minimalweather.database.dao.CityDAO
+import you.devknights.minimalweather.database.dao.WeatherCityDAO
 import you.devknights.minimalweather.database.dao.WeatherDAO
 import you.devknights.minimalweather.database.entity.City
 import you.devknights.minimalweather.database.entity.Weather
+import you.devknights.minimalweather.database.entity.WeatherCity
 
 /**
  * Database for Weather Apps. It'll return all the DAO.
  * @author vinayagasundar
  */
-@Database(entities = [(Weather::class), (City::class)], version = 1)
+@Database(entities = [(Weather::class), (City::class), WeatherCity::class], version = 1)
 abstract class WeatherDatabase : RoomDatabase() {
 
     abstract fun weatherDAO(): WeatherDAO
 
     abstract fun cityDAO(): CityDAO
+
+    abstract fun weatherCityDao(): WeatherCityDAO
 
     companion object {
 

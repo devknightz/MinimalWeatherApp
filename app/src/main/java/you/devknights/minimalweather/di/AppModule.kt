@@ -20,28 +20,21 @@ package you.devknights.minimalweather.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.room.Room
-
 import com.google.gson.Gson
-
-import javax.inject.Singleton
-
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import you.devknights.minimalweather.database.WeatherDatabase
-import you.devknights.minimalweather.database.dao.CityDAO
-import you.devknights.minimalweather.database.dao.WeatherDAO
 import you.devknights.minimalweather.network.ApiService
 import you.devknights.minimalweather.network.LiveDataCallAdapterFactory
+import javax.inject.Singleton
 
 /**
  * @author vinayagasundar
  */
-@Module(includes = [(ViewModelModule::class), (LiveDataModule::class)])
+@Module(includes = [(ViewModelModule::class), (LiveDataModule::class), RoomModule::class])
 internal class AppModule {
 
     @Provides
@@ -61,24 +54,6 @@ internal class AppModule {
     fun providesGson(): Gson {
         return Gson()
     }
-
-
-    @Provides
-    @Singleton
-    fun provideDB(application: Application): WeatherDatabase {
-        return Room.databaseBuilder(application, WeatherDatabase::class.java, "weather.db")
-                .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideWeatherDao(db: WeatherDatabase): WeatherDAO {
-        return db.weatherDAO()
-    }
-
-    @Provides
-    @Singleton
-    fun provideCityDao(db: WeatherDatabase): CityDAO = db.cityDAO()
 
     @Provides
     @Singleton
