@@ -92,7 +92,7 @@ class CityRepository @Inject constructor(private val context: Context,
         mAppExecutors.runOnDisk {
             val nextIndex = weatherCityDAO.maxIndex() + 1
 
-            val weatherCity = WeatherCity(-1, city.id, city.latitude, city.longitude, nextIndex)
+            val weatherCity = WeatherCity(city.id, city.latitude, city.longitude, nextIndex)
 
             weatherCityDAO.insert(weatherCity)
         }
