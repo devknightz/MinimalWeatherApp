@@ -156,12 +156,7 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
         landingViewModel.getAllWeatherCity().observe(this, Observer {
             it?.let {
                 if (it.isNotEmpty()) {
-                    supportFragmentManager.beginTransaction()
-                            .replace(R.id.frame_container, WeatherFragment.newInstance(it[0]))
-                            .commit()
-                }
-                it.forEach {
-                    Log.i(TAG, it.toString())
+                    weather_pager.adapter = WeatherCityAdapter(supportFragmentManager, it)
                 }
             }
         })

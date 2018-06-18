@@ -107,12 +107,11 @@
         </LinearLayout>
     </FrameLayout>
 
-    <!--TODO FrameLayout(frame_container) will changed into a ViewPager-->
 
-    <FrameLayout
-        android:id="@+id/frame_container"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/weather_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="?attr/actionBarSize" />
 
     <FrameLayout
