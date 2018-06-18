@@ -18,8 +18,6 @@
 package you.devknights.minimalweather.ui.weather
 
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.text.format.DateFormat
@@ -32,22 +30,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_weather.*
-
-import java.util.Calendar
-
-import javax.inject.Inject
-
 import you.devknights.minimalweather.R
 import you.devknights.minimalweather.database.entity.Weather
+import you.devknights.minimalweather.database.entity.WeatherCity
 import you.devknights.minimalweather.di.Injectable
 import you.devknights.minimalweather.model.Resource
 import you.devknights.minimalweather.model.Status
 import you.devknights.minimalweather.util.UnitConvUtil
-import you.devknights.minimalweather.util.ext.isPermissionGranted
+import java.util.*
+import javax.inject.Inject
 
 
 /**
- * A simple [Fragment] subclass.
+ * [Fragment] for displaying the Weather Details
  */
 class WeatherFragment : Fragment(), Injectable {
 
@@ -55,6 +50,25 @@ class WeatherFragment : Fragment(), Injectable {
     lateinit var mFactory: ViewModelProvider.Factory
 
     lateinit var mWeatherViewModel: WeatherViewModel
+
+    lateinit var mWeatherCity: WeatherCity
+
+    companion object {
+        private val TAG = "WeatherFragment"
+        private const val PARAMS_WEATHER_CITY = "PARAMS_WEATHER_CITY"
+
+        fun newInstance(weatherCity: WeatherCity): Fragment {
+            val fragment = WeatherFragment()
+
+            val args = Bundle()
+
+            args.putParcelable(PARAMS_WEATHER_CITY, weatherCity)
+
+            fragment.arguments = args
+
+            return fragment
+        }
+    }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -64,38 +78,20 @@ class WeatherFragment : Fragment(), Injectable {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        /* [PARAMS_WEATHER_CITY] should always contain a value.*/
+        mWeatherCity = arguments?.getParcelable(PARAMS_WEATHER_CITY) as WeatherCity
+
         loadingProgressBar?.visibility = View.VISIBLE
 
         mWeatherViewModel = ViewModelProviders.of(this, mFactory)
                 .get(WeatherViewModel::class.java)
+        val location = Location("")
+        location.latitude = mWeatherCity.latitude
+        location.longitude = mWeatherCity.longitude
 
-        mWeatherViewModel.syncCityData()
-
-
-        if (!isPermissionGranted(PERMISSIONS)) {
-            requestPermissions(PERMISSIONS, PERMISSION_REQUEST_CODE)
-        } else {
-            startLocationUpdates()
-        }
+        getDataFromLocation(location)
     }
 
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
-                                            grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            startLocationUpdates()
-        }
-    }
-
-    private fun startLocationUpdates() {
-        mWeatherViewModel.location.observe(this, Observer<Location> {
-            it?.let {
-                this.getDataFromLocation(it)
-            }
-        })
-    }
 
     private fun getDataFromLocation(location: Location) {
         val resourceLiveData = mWeatherViewModel
@@ -168,11 +164,5 @@ class WeatherFragment : Fragment(), Injectable {
         }
     }
 
-    companion object {
 
-        private val PERMISSION_REQUEST_CODE = 1420
-        private val PERMISSIONS = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
-
-        private val TAG = "WeatherFragment"
-    }
-}// Required empty public constructor
+}

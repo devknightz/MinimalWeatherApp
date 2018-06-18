@@ -17,8 +17,12 @@
 
 package you.devknights.minimalweather.ui.landing
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -33,6 +37,7 @@ import you.devknights.minimalweather.ui.MinimalWeatherAppActivity
 import you.devknights.minimalweather.ui.city.select.SelectCityFragment
 import you.devknights.minimalweather.ui.weather.WeatherFragment
 import you.devknights.minimalweather.util.ThemeUtil
+import you.devknights.minimalweather.util.ext.isPermissionGranted
 import javax.inject.Inject
 
 
@@ -51,6 +56,14 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
 
     private lateinit var landingViewModel: LandingViewModel
 
+    companion object {
+        private const val TAG = "LandingActivity"
+
+        private val PERMISSIONS = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+        private const val PERMISSION_REQUEST_CODE = 1420
+
+    }
+
 
     override val layoutResId: Int
         get() = R.layout.activity_landing
@@ -62,11 +75,7 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
 
         landingViewModel = ViewModelProviders.of(this, viewModelFactory)[LandingViewModel::class.java]
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, WeatherFragment())
-                    .commit()
-        }
+        landingViewModel.syncCityData()
 
         setUpBottomDrawer(parent_container as View)
 
@@ -105,6 +114,13 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
 
             it.visibility = View.GONE
         }
+
+
+        if (!isPermissionGranted(PERMISSIONS)) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE)
+        } else {
+            showWeatherCity()
+        }
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment>? {
@@ -119,6 +135,36 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
         }
 
         super.onBackPressed()
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            val result = grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    || grantResults[1] == PackageManager.PERMISSION_GRANTED
+
+            if (result) {
+                showWeatherCity()
+            }
+        }
+    }
+
+
+    private fun showWeatherCity() {
+        landingViewModel.getAllWeatherCity().observe(this, Observer {
+            it?.let {
+                if (it.isNotEmpty()) {
+                    supportFragmentManager.beginTransaction()
+                            .replace(R.id.frame_container, WeatherFragment.newInstance(it[0]))
+                            .commit()
+                }
+                it.forEach {
+                    Log.i(TAG, it.toString())
+                }
+            }
+        })
     }
 
     private fun setUpBottomDrawer(view: View) {
