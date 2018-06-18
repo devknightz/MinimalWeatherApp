@@ -11,7 +11,8 @@ import you.devknights.minimalweather.database.dao.CityDAO
 import you.devknights.minimalweather.database.entity.City
 
 
-class CityCursorAdapter(context: Context, private val cityDAO: CityDAO): ResourceCursorAdapter(context, R.layout.item_city, null, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER) {
+class CityCursorAdapter(context: Context, private val cityDAO: CityDAO) :
+        ResourceCursorAdapter(context, R.layout.item_city_dropdown, null, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER) {
     override fun bindView(convertView: View?, context: Context?, cursor: Cursor?) {
         val cityViewHolder = CityViewHolder(convertView as View)
         val city = City(cursor?.getLong(0) as Long, cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3), cursor.getString(4))
