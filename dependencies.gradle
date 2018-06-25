@@ -29,7 +29,7 @@ ext {
     retrofitGsonConvVersion = "2.1.0"
 
     // Dagger
-    daggerVersion = "2.14"
+    daggerVersion = "2.16"
 
     // Test
     junitVersion = '4.12'
