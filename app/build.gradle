@@ -58,7 +58,7 @@ android {
         /*Enabled Vector Support*/
         vectorDrawables.useSupportLibrary = true
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "you.devknights.minimalweather.MinimalTestRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -99,6 +99,11 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += "src/test-common/java"
+        test.java.srcDirs += "src/test-common/java"
     }
 }
 
@@ -147,6 +152,12 @@ dependencies {
     androidTestImplementation(deps.espressoCore, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    androidTestImplementation( deps.archCoreTesting, {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
+
 
 //    debugImplementation deps.debugDB
 
