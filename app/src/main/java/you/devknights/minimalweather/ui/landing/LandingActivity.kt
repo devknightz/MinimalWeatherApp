@@ -18,9 +18,9 @@
 package you.devknights.minimalweather.ui.landing
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -34,8 +34,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_landing.*
 import you.devknights.minimalweather.R
 import you.devknights.minimalweather.ui.MinimalWeatherAppActivity
-import you.devknights.minimalweather.ui.city.select.SelectCityFragment
-import you.devknights.minimalweather.ui.weather.WeatherFragment
+import you.devknights.minimalweather.ui.city.CityActivity
 import you.devknights.minimalweather.util.ThemeUtil
 import you.devknights.minimalweather.util.ext.isPermissionGranted
 import javax.inject.Inject
@@ -107,12 +106,7 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
 
 
         fab_add_city?.setOnClickListener {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.child_frame_container, SelectCityFragment())
-                    .addToBackStack(null)
-                    .commit()
-
-            it.visibility = View.GONE
+            startActivity(Intent(this, CityActivity::class.java))
         }
 
 
@@ -126,17 +120,6 @@ class LandingActivity : MinimalWeatherAppActivity(), HasSupportFragmentInjector 
     override fun supportFragmentInjector(): AndroidInjector<Fragment>? {
         return dispatchingAndroidInjector
     }
-
-    override fun onBackPressed() {
-        (fab_add_city as View).visibility = if (supportFragmentManager.backStackEntryCount == 1) {
-            View.VISIBLE
-        } else {
-            fab_add_city.visibility
-        }
-
-        super.onBackPressed()
-    }
-
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
